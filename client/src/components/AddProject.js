@@ -25,24 +25,43 @@ export default function AddProject(props) {
 
 	return (
 		<>
-			<h1>AddProject</h1>
+			<h1>Add your own ride</h1>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="title">Title: </label>
+				<label htmlFor="title">From: </label>
 				<input
 					id="title"
 					type="text"
 					value={title}
 					onChange={e => setTitle(e.target.value)}
 				/>
-				<label htmlFor="title">Description: </label>
+				<label htmlFor="title">To: </label>
+				<input
+					id="title"
+					type="text"
+					value={title}
+					onChange={e => setTitle(e.target.value)}
+				/>
+				
+				<label htmlFor="title">Date: </label>
 				<input
 					id="description"
 					type="text"
 					value={description}
 					onChange={e => setDescription(e.target.value)}
 				/>
-				<button type="submit">Add this project</button>
+				<button type="submit">Add this ride</button>
 			</form>
+			<h1>Search for a train</h1>
+			<label htmlFor="title">Placeholder: </label>
+				<input
+					id="title"
+					type="text"
+					placeholder="searchbar placeholder"
+					value={title}
+					onChange={e => setTitle(e.target.value)
+					}
+				/>
+
 		</>
 	)
 }
