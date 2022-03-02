@@ -1,3 +1,4 @@
+// context/auth.js
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
@@ -9,10 +10,10 @@ function AuthProviderWrapper(props) {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 
-	const loginUser = token => {
+	// Change: this function is renamed now and the call of verifyStoredToken removed
+	const storeToken = token => {
 		// store this token in local storage
 		localStorage.setItem('authToken', token)
-		verifyStoredToken()
 	}
 
 	const logoutUser = () => {
@@ -27,7 +28,8 @@ function AuthProviderWrapper(props) {
 		// check local storage
 		const storedToken = localStorage.getItem('authToken')
 		if (storedToken) {
-			axios.get('/api/auth/verify', { headers: { Authorization: `Bearer ${storedToken}` } })
+			// Change: by adding this return we now return a promise
+			return axios.get('/api/auth/verify', { headers: { Authorization: `Bearer ${storedToken}` } })
 				.then(response => {
 					const user = response.data
 					setUser(user)
@@ -52,11 +54,11 @@ function AuthProviderWrapper(props) {
 	}, [])
 
 	return (
-		<AuthContext.Provider value={{ isLoggedIn, user, isLoading, loginUser, logoutUser }}>
+		// Change: this now also contains the verifyStoredToken function
+		<AuthContext.Provider value={{ isLoggedIn, user, isLoading, storeToken, verifyStoredToken, logoutUser }}>
 			{props.children}
 		</AuthContext.Provider>
 	)
 }
-	
 
 export { AuthProviderWrapper, AuthContext }

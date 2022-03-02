@@ -1,3 +1,4 @@
+// pages/Login.js
 import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -11,7 +12,7 @@ export default function Login() {
 
 	const navigate = useNavigate()
 
-	const { loginUser } = useContext(AuthContext)
+	const { storeToken, verifyStoredToken } = useContext(AuthContext)
 
 	const handleSubmit = e => {
 		e.preventDefault()
@@ -21,10 +22,16 @@ export default function Login() {
 				// redirect to projects
 				console.log('i have a token mothafukkas')
 				const token = response.data.authToken
-				// store the token
-				loginUser(token)
-				// redirect to projects
-				navigate('/projects')
+				// Change: this only stores the token
+				storeToken(token)
+				// Change: we also call verify
+				// Change because verifyStoredToken return a promise now we can chain  
+				// a .then and wait for the response
+				verifyStoredToken()
+					.then(() => {
+						// redirect to projects
+						navigate('/')
+					})
 			})
 			.catch(err => {
 				const errorDescription = err.response.data.message
@@ -53,4 +60,3 @@ export default function Login() {
 		</>
 	)
 }
-
