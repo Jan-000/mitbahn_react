@@ -56,5 +56,12 @@ router.delete('/:id', (req, res, next) => {
     .catch(err => next(err))
 });
 
+//search for a ride
+router.get('/', (req, res, next) => {
+  console.log("search for a ride route")
+    })
+
+
+
 
 module.exports = router;

@@ -2,9 +2,15 @@ import React, { useState } from 'react'
 import axios from 'axios';
 
 export default function AddProject(props) {
+	const [visible, setVisible] = useState(false);
 
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
+
+	const handleSearchRide = e => {
+		e.preventDefault()
+		setVisible(true)
+	}
 	const storedToken = localStorage.getItem('authToken')
 	const handleSubmit = e => {
 		e.preventDefault()
@@ -52,6 +58,7 @@ export default function AddProject(props) {
 				<button type="submit">Add this ride</button>
 			</form>
 			<h1>Search for a train</h1>
+			<form onSubmit= {handleSearchRide}>
 			<label htmlFor="title">Placeholder: </label>
 				<input
 					id="title"
@@ -61,6 +68,11 @@ export default function AddProject(props) {
 					onChange={e => setTitle(e.target.value)
 					}
 				/>
+				<button>Search</button>
+				</form>
+				{
+					visible && (<h1>test</h1>)
+				}
 
 		</>
 	)

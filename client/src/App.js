@@ -9,6 +9,8 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 
+import SearchResults from './pages/SearchRide'
+
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/projects/:id' element={<ProjectDetails />} />
         <Route path='/projects/edit/:id' element={<EditProject />} />
+        <Route path='/searchresults' element={<SearchResults />} />
       </Routes>
     </div>
   );
