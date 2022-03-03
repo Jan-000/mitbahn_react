@@ -9,6 +9,7 @@ export default function UserProfile() {
   // const [user, setUser] = useState(null) 
   const { isLoggedIn, user, logoutUser } = useContext(AuthContext)
   // const id = user.id
+	
 
   useEffect(() => {
     axios.get(`/api/user/${user._id}
@@ -28,8 +29,9 @@ export default function UserProfile() {
       <h3>Mail: {user.email}</h3>
       <h3>Password: ********</h3>
 </div>
+    	<Link to={`../userprofileedit/${user._id}`}>
     <button id='profile-edit' >EditProfile</button>
-    <button id='profile.delete' >Delete Profile</button>
+    </Link>
     </div>
   )
 }
