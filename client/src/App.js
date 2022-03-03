@@ -8,7 +8,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
-
+import UserProfile from './components/UserProfile';
 import SearchResults from './pages/SearchRide'
 
 
@@ -33,6 +33,7 @@ function App() {
         <Route path='/projects/:id' element={<ProjectDetails />} />
         <Route path='/projects/edit/:id' element={<EditProject />} />
         <Route path='/searchresults' element={<SearchResults />} />
+        <Route path='/userProfile' element={<UserProfile />} />
       </Routes>
     </div>
   );

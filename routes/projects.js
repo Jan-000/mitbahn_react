@@ -61,6 +61,20 @@ router.get('/', (req, res, next) => {
   console.log("search for a ride route")
     })
 
+// display user details
+router.get('/user/:id', (req, res, next) => {
+  User.findById(req.params.id)
+    .then(user => {
+      // check for a valid mongoobject id
+      // mongoose.Types.ObjectId.isValid(<id>) 
+      if (!user) {
+        res.status(404).json(user)
+      } else {
+        res.status(200).json(user)
+      }
+    })
+});
+
 
 
 
