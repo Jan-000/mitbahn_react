@@ -32,7 +32,7 @@ export default function ProjectList() {
 
 	return (
 		<>
-			<h1>All the projects</h1>
+			<h1>Available rides</h1>
 			{projects.map(project => <ProjectCard key={project._id} {...project} />)}
 			<AddProject refreshProjects={getAllProjects} />
 		</>

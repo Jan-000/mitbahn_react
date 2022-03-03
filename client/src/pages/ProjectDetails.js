@@ -25,8 +25,10 @@ export default function ProjectDetails() {
 			{project === null ? <div>Loading ...</div> :
 				<>
 					<h1>ProjectDetails</h1>
-					<h3>{project.title}</h3>
-					<p>{project.description}</p>
+					<h3>title : {project.title}</h3>
+					<p>start station: {project.startStation}</p>
+					<p>end station : {project.endStation}</p>
+					<p>date : {project.date}</p>
 					<Link to={`/projects/edit/${project._id}`}>
 						<button>Edit this project</button>
 					</Link>
