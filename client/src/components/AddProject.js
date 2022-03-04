@@ -5,10 +5,8 @@ export default function AddProject(props) {
 	const [visible, setVisible] = useState(false);
 
 	const [title, setTitle] = useState('');
-	const [description, setDescription] = useState('');
-
-	const [endStation, setEndStation] = useState('');
 	const [startStation, setStartStation] = useState('');
+	const [endStation, setEndStation] = useState('');
 	const [date, setDate] = useState('');
 
 	const handleSearchRide = e => {
@@ -20,7 +18,7 @@ export default function AddProject(props) {
 		e.preventDefault()
 		// send the data from the state as a post request to 
 		// the backend
-		axios.post('/api/projects', { title, description, endStation }, { headers: { Authorization: `Bearer ${storedToken}` } })
+		axios.post('/api/projects', { title, startStation, endStation, date }, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
 				console.log(response)
 				console.log('test');
@@ -28,9 +26,8 @@ export default function AddProject(props) {
 			.catch(err => console.log(err))
 		// reset the form
 		setTitle('')
-		setDescription('')
-		setEndStation('')
 		setStartStation('')
+		setEndStation('')
 		setDate('')
 		// refresh the list of the projects in ProjectList
 		props.refreshProjects()
@@ -40,14 +37,14 @@ export default function AddProject(props) {
 		<>
 			<h1>Add your own ride</h1>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="title">From: </label>
+				<label htmlFor="title">Title: </label>
 				<input
 					id="title"
 					type="text"
 					value={title}
 					onChange={e => setTitle(e.target.value)}
 				/>
-				<label htmlFor="startStation">To: </label>
+				<label htmlFor="startStation">From: </label>
 				<input
 					id="startStation"
 					type="text"
@@ -55,13 +52,20 @@ export default function AddProject(props) {
 					onChange={e => setStartStation(e.target.value)}
 				/>
 				
-				<label htmlFor="endStation">Date: </label>
+				<label htmlFor="endStation">To: </label>
 				<input
 
 					id="endStation"
 					type="text"
 					value={endStation}
 					onChange={e => setEndStation(e.target.value)}
+				/>
+				<label htmlFor="date">Date: </label>
+				<input
+					id="date"
+					type="text"
+					value={date}
+					onChange={e => setDate(e.target.value)}
 				/>
 				<button type="submit">Add this ride</button>
 			</form>
@@ -95,11 +99,11 @@ export default function AddProject(props) {
 					}
 				/>
 
-			<label htmlFor="departureDate">Date: </label>
+			<label htmlFor="date">Date: </label>
 				<input
-					id="departureDate"
+					id="date"
 					type="text"
-					placeholder="departure date"
+					placeholder="date"
 					value={date}
 					onChange={e => setDate(e.target.value)
 					}

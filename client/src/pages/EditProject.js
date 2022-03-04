@@ -7,7 +7,6 @@ const storedToken = localStorage.getItem('authToken')
 export default function EditProject() {
 
 	const [title, setTitle] = useState('');
-	const [description, setDescription] = useState('');
 	const [startStation, setStartStation] = useState('');
 	const [endStation, setEndStation] = useState('');
 	const [date, setDate] = useState('');
@@ -18,7 +17,7 @@ export default function EditProject() {
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		const requestBody = { title, description }
+		const requestBody = { title, startStation, endStation, date }
 		axios.put(`/api/projects/${id}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(() => {
 				// this redirects using react router
@@ -39,9 +38,11 @@ export default function EditProject() {
 	useEffect(() => {
 		axios.get(`/api/projects/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
-				const { title, description } = response.data
+				const { title, startStation, endStation, date } = response.data
 				setTitle(title)
-				setDescription(description)
+				setStartStation(startStation)
+				setEndStation(endStation)
+				setDate(date)
 			})
 			.catch(err => console.log(err))
 	}, [])
@@ -65,7 +66,7 @@ export default function EditProject() {
 					value={startStation}
 					onChange={e => setStartStation(e.target.value)}
 				/>
-					<label htmlFor="title">To: </label>
+					<label htmlFor="endStation">To: </label>
 				<input
 					id="endStation"
 					type="text"
