@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { startSession } from '../../../models/Project';
+// import { startSession } from '../../../models/Project';
 
 
 export default function ProjectCard({ title, _id}) {
