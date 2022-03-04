@@ -51,7 +51,7 @@ export default function AddProject(props) {
 				<label htmlFor="title">Date: </label>
 				<input
 					id="description"
-					type="text"
+					type="date"
 					value={description}
 					onChange={e => setDescription(e.target.value)}
 				/>
