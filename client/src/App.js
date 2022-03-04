@@ -9,7 +9,9 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import UserProfile from './components/UserProfile';
-import SearchGroup from './components/SearchGroup'
+import SearchGroup from './components/SearchGroup';
+import ProductsPage from './components/ProductsPage'
+
 
 import UserProfileEdit from './components/UserProfileEdit'
 import UserProfileDeleted from './components/UserProfileDeleted';
@@ -18,6 +20,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <ProductsPage />
       <Routes>
         <Route path='/' element={<Home />} />
 
