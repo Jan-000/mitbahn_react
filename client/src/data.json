@@ -1,0 +1,10 @@
+[
+  {"category": "Sporting Goods",  "startStation": "$49.99",    "inStock": true,    "endStation": "Football",  "date": "monday",  "id": "295a4dab-74b2-4e60-b3c2-c1346aba7585"},
+  {"category": "Sporting Goods",  "startStation": "$9.99",    "inStock": false,   "endStation": "Basketball",  "date": "Colday",  "id": "6cf41052-7869-490f-9c2c-8f8efd2a4b5d"},
+  {"category": "Electronics",     "startStation": "$99.99",    "inStock": true,    "endStation": "iPod Touch",  "date": "Midday",  "id": "6fa4681a-61e1-4bf6-823a-24b2fe335543"},
+  {"category": "Electronics",     "startStation": "$199.99",   "inStock": false,   "endStation": "iPhone X", "date": "Anday",   "id": "bbdabd03-0e02-4e7d-a7fc-ce52cc1164be"},
+  {"category": "Sporting Goods",  "startStation": "$9.99",   "inStock": true,    "endStation": "Tennis Balls",  "date": "Wday",  "id": "5358b8a4-fe62-4f7d-9a22-712be95a1f72"},
+  {"category": "Electronics",     "startStation": "$199.99",   "inStock": true,    "endStation": "Huawei P10", "date": "Friday",   "id": "10858000-7894-4d77-bd0f-24639d111e74"},
+  {"category": "Electronics",     "startStation": "$199.99",   "inStock": true,    "endStation": "iPad Mini",  "date": "Thursday",  "id": "a385a23f-07ed-4340-9ba7-937a0ce5f151"},
+  {"category": "Sporting Goods",  "startStation": "$9.99",     "inStock": true,    "endStation": "Baseball",   "date": "Tuesday", "id": "4522f16e-3f55-4863-ae36-e935ec9cb4ef"}
+]
