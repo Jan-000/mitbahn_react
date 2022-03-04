@@ -15,7 +15,7 @@ export default function ProjectCard({ title, _id}) {
 				<h3>{endStation}</h3>
 				<h3>{date}</h3> */}
 
-			<p>marker to recognize ProjectCard.js</p>
+			<p>marker to recognize ProjectCard.js component</p>
 		</div>
 	)
 }

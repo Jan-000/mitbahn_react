@@ -9,7 +9,8 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import UserProfile from './components/UserProfile';
-import SearchResults from './pages/SearchRide'
+import SearchGroup from './components/SearchGroup'
+
 import UserProfileEdit from './components/UserProfileEdit'
 import UserProfileDeleted from './components/UserProfileDeleted';
 
@@ -33,7 +34,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/projects/:id' element={<ProjectDetails />} />
         <Route path='/projects/edit/:id' element={<EditProject />} />
-        <Route path='/searchresults' element={<SearchResults />} />
+        <Route path='/searchgroup' element={<SearchGroup />} />
         <Route path='/userprofile' element={<UserProfile />} />
         <Route path='/userprofileedit/:id' element={<UserProfileEdit />} />
         <Route path='/userprofiledeleted/:id' element={<UserProfileDeleted />} />

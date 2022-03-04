@@ -33,6 +33,7 @@ export default function Navbar() {
 						
 					</>
 				)}
+				<p>this is navbar.js component</p>
 		</nav>
 	)
 }

@@ -83,6 +83,7 @@ export default function EditProject() {
 				<button type="submit">Update this project</button>
 			</form>
 			<button onClick={deleteProject}>Delete this project</button>
+			<p>this is editproject.js page</p>
 		</>
 
 	)
