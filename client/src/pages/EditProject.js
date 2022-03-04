@@ -8,6 +8,9 @@ export default function EditProject() {
 
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
+	const [startStation, setStartStation] = useState('');
+	const [endStation, setEndStation] = useState('');
+	const [date, setDate] = useState('');
 
 	const { id } = useParams()
 
@@ -47,19 +50,34 @@ export default function EditProject() {
 		<>
 			<h1>Edit this project</h1>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="title">Title: </label>
+				<label htmlFor="title">Title to keep track JG: </label>
 				<input
 					id="title"
 					type="text"
 					value={title}
 					onChange={e => setTitle(e.target.value)}
+					placeholder="xD"
 				/>
-				<label htmlFor="title">Description: </label>
+				<label htmlFor="title">From: </label>
 				<input
-					id="description"
+					id="startStation"
 					type="text"
-					value={description}
-					onChange={e => setDescription(e.target.value)}
+					value={startStation}
+					onChange={e => setStartStation(e.target.value)}
+				/>
+					<label htmlFor="title">To: </label>
+				<input
+					id="endStation"
+					type="text"
+					value={endStation}
+					onChange={e => setEndStation(e.target.value)}
+				/>
+				<label htmlFor="date">To: </label>
+				<input
+					id="date"
+					type="text"
+					value={date}
+					onChange={e => setDate(e.target.value)}
 				/>
 				<button type="submit">Update this project</button>
 			</form>

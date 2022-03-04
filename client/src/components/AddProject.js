@@ -7,6 +7,10 @@ export default function AddProject(props) {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 
+	const [endStation, setEndStation] = useState('');
+	const [startStation, setStartStation] = useState('');
+	const [date, setDate] = useState('');
+
 	const handleSearchRide = e => {
 		e.preventDefault()
 		setVisible(true)
@@ -16,7 +20,7 @@ export default function AddProject(props) {
 		e.preventDefault()
 		// send the data from the state as a post request to 
 		// the backend
-		axios.post('/api/projects', { title, description }, { headers: { Authorization: `Bearer ${storedToken}` } })
+		axios.post('/api/projects', { title, description, endStation }, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
 				console.log(response)
 				console.log('test');
@@ -25,6 +29,9 @@ export default function AddProject(props) {
 		// reset the form
 		setTitle('')
 		setDescription('')
+		setEndStation('')
+		setStartStation('')
+		setDate('')
 		// refresh the list of the projects in ProjectList
 		props.refreshProjects()
 	}
@@ -40,32 +47,61 @@ export default function AddProject(props) {
 					value={title}
 					onChange={e => setTitle(e.target.value)}
 				/>
-				<label htmlFor="title">To: </label>
+				<label htmlFor="startStation">To: </label>
 				<input
-					id="title"
+					id="startStation"
 					type="text"
-					value={title}
-					onChange={e => setTitle(e.target.value)}
+					value={startStation}
+					onChange={e => setStartStation(e.target.value)}
 				/>
 				
-				<label htmlFor="title">Date: </label>
+				<label htmlFor="endStation">Date: </label>
 				<input
-					id="description"
-					type="date"
-					value={description}
-					onChange={e => setDescription(e.target.value)}
+
+					id="endStation"
+					type="text"
+					value={endStation}
+					onChange={e => setEndStation(e.target.value)}
 				/>
 				<button type="submit">Add this ride</button>
 			</form>
 			<h1>Search for a train</h1>
 			<form onSubmit= {handleSearchRide}>
-			<label htmlFor="title">Placeholder: </label>
+			<label htmlFor="title">Title to keep track JG </label>
 				<input
 					id="title"
 					type="text"
+					placeholder="xD"
+					value= {title}
+					onChange= {e => setTitle(e.target.value)
+					}
+				/>
+			<label htmlFor="startStation">From: </label>
+				<input
+					id="startStation"
+					type="text"
 					placeholder="searchbar placeholder"
-					value={title}
-					onChange={e => setTitle(e.target.value)
+					value={startStation}
+					onChange={e => setStartStation(e.target.value)
+					}
+				/>
+			<label htmlFor="endStation">To: </label>
+				<input
+					id="endStation"
+					type="text"
+					placeholder="searchbar placeholder"
+					value={endStation}
+					onChange={e => setEndStation(e.target.value)
+					}
+				/>
+
+			<label htmlFor="departureDate">Date: </label>
+				<input
+					id="departureDate"
+					type="text"
+					placeholder="departure date"
+					value={date}
+					onChange={e => setDate(e.target.value)
 					}
 				/>
 				<button>Search</button>
