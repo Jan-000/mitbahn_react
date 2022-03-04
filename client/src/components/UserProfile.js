@@ -6,14 +6,14 @@ import {AuthContext} from '../context/auth'
 export default function UserProfile() {
 
   const storedToken = localStorage.getItem('authToken')
-  // const [user, setUser] = useState(null) 
-  const { isLoggedIn, user, logoutUser } = useContext(AuthContext)
+  const [user, setUser] = useState(null) 
+  const { isLoggedIn, logoutUser } = useContext(AuthContext)
   // const id = user.id
 	
 
   useEffect(() => {
-    axios.get(`/api/user/${user._id}
-    `, { headers: { Authorization: `Bearer ${storedToken}` } })
+    axios.get(`/api/user/${user._id}`
+    , { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
 				console.log(response)
 				// setUser(response.data)

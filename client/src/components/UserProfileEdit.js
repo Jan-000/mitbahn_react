@@ -6,7 +6,15 @@ import { AuthContext } from '../context/auth'
 export default function UserProfileEdit() {
 
     const storedToken = localStorage.getItem('authToken')
-    const { user } = useContext(AuthContext)
+    const { user, setUser } = useContext(AuthContext)
+ // const deleteUser = userId => {
+
+    //     const filteredUser = user.filter(user => {
+    //       return user._id !== userId;
+    //  });
+    //  setUser(filteredUser);
+
+    // };
 
     useEffect(() => {
         axios.post(`/api/user/${user._id}
@@ -36,6 +44,11 @@ export default function UserProfileEdit() {
             <div id='delete-button'>
                 <button id='profile.delete' >Delete Profile</button>
             </div>
+            {/* <button onClick={() => deleteUser(user._id)} className="btn-delete"> */}
+
+              {/* Delete 
+
+            </button> */}
         </>
 
     )
