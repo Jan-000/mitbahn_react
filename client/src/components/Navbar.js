@@ -18,6 +18,9 @@ export default function Navbar() {
 							<button>Rides</button>
 						</Link>
 						<button onClick={logoutUser}>Logout</button>
+						<Link to='/userProfile'>
+							<button>Profile</button>
+						</Link>
 					</>
 				) : (
 					<>
@@ -27,6 +30,7 @@ export default function Navbar() {
 						<Link to='/login'>
 							<button>Login</button>
 						</Link>
+						
 					</>
 				)}
 		</nav>

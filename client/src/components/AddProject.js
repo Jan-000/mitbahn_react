@@ -54,6 +54,7 @@ export default function AddProject(props) {
 				
 				<label htmlFor="endStation">To: </label>
 				<input
+
 					id="endStation"
 					type="text"
 					value={endStation}
