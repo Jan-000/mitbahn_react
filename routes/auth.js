@@ -4,6 +4,8 @@ const User = require('../models/User')
 const jwt = require('jsonwebtoken');
 const { isAuthenticated } = require("../middleware/jwt");
 
+// const { user } = require('../client/src/context/auth')
+
 router.post('/signup', (req, res, next) => {
 	const { email, password, name } = req.body
 	// check if email or name or password are empty
@@ -85,6 +87,27 @@ router.get('/verify', isAuthenticated, (req, res, next) => {
 	res.status(200).json(req.payload)
 });
 
+// router.get('/userProfile', !isAuthenticated, (req, res, next) => {
+// 	res.status(400).json({ message: 'err' })
+// });
+
+router.post("/userprofileedit", (req, res, next) => {
+	const {name, email, password}  = req.body;
+   
+  console.log(req.body)
+  
+  User.findByIdAndUpdate(req.user._id, { name, email, password}, {new: true} )
+  // User.findByIdAndUpdate(req.session.user, { lastName: req.body.lastName}, {firstName: req.body.firstName}, {email:req.body.email })
+  .then((user) => {
+  console.log('gets updated')
+  req.session.user = user
+  
+  res.redirect('/auth/userprofile')
+  })
+  .catch(err => { 
+	next(err);
+  })
+  })
 
 
 
