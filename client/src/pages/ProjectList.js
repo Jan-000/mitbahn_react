@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import ProjectCard from '../components/ProjectCard';
 import AddProject from '../components/AddProject';
+import GoToSearch from '../components/GoToSearch'
 
 
 export default function ProjectList() {
@@ -33,8 +34,10 @@ export default function ProjectList() {
 	return (
 		<>
 			<h1>Available rides</h1>
+			<p>dit is page ProjectList.js</p>
 			{projects.map(project => <ProjectCard key={project._id} {...project} />)}
 			<AddProject refreshProjects={getAllProjects} />
+			<GoToSearch />
 		</>
 	)
 }

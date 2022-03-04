@@ -29,6 +29,7 @@ export default function ProjectDetails() {
 					<p>start station: {project.startStation}</p>
 					<p>end station : {project.endStation}</p>
 					<p>date : {project.date}</p>
+					<p>here is page ProjectDetails.js</p>
 					<Link to={`/projects/edit/${project._id}`}>
 						<button>Edit this project</button>
 					</Link>
