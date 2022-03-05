@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import UserProfile from './components/UserProfile';
+
 import SearchGroup from './components/SearchGroup';
 import ProductsPage from './components/ProductsPage'
 
@@ -20,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <ProductsPage />
+
       <Routes>
         <Route path='/' element={<Home />} />
 
