@@ -1,10 +1,20 @@
-// import React, { useEffect, useState } from 'react'
-// import axios from 'axios';
- import SearchGroup from '../components/SearchGroup ';
-// import AddProject from '../components/AddProject';
+
+import React from 'react'
+import SearchGroup from '../components/SearchGroup ';
+import ProductsPage from '../components/ProductsPage'
+
+export default function SrcGroup() {
+	return (
+		<h1>This is the search group page
+		</h1>
+
+		
+	)
+}
 
 
-<h1>xD</h1>
+
+
 // import React, { useState, useContext } from 'react'
 // import { Link, useNavigate } from 'react-router-dom'
 // import axios from 'axios'
