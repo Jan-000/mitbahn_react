@@ -25,7 +25,6 @@ export default function GroupDetails() {
 			{group === null ? <div>Loading ...</div> :
 				<>
 					<h1>GroupDetails</h1>
-					<h3>title : {group.title}</h3>
 					<p>start station: {group.startStation}</p>
 					<p>end station : {group.endStation}</p>
 					<p>date : {group.date}</p>

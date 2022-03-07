@@ -47,13 +47,13 @@ export default function SearchGroup(props) {
 		dynamicSearch = allGroups.data.filter((group)=>{
 		if  (group.endStation.includes(endStation))
 		return group
-	})}
+	})};
 	
 	if (allGroups){
 		dynamicSearch = allGroups.data.filter((group)=>{
 		if  (group.startStation.includes(startStation))
 		return group
-	})}
+	})};
 
 
 	if (allGroups){
@@ -76,7 +76,6 @@ if (allGroups === null){
 				<input
 					id="startStation"
 					type="text"
-					placeholder="searchbar placeholder"
 					value={startStation}
 					onChange={e => setStartStation(e.target.value)
 					}
@@ -85,7 +84,6 @@ if (allGroups === null){
 				<input
 					id="endStation"
 					type="text"
-					placeholder="searchbar placeholder"
 					value={endStation}
 					onChange={e => setEndStation(e.target.value)
 					}
@@ -95,12 +93,11 @@ if (allGroups === null){
 				<input
 					id="date"
 					type="text"
-					placeholder="date"
 					value={date}
 					onChange={e => setDate(e.target.value)
 					}
 				/>
-
+				
 				{dynamicSearch.map((group)=>{
 					return <>
 					<h1>From: {group.startStation}</h1> 
@@ -108,9 +105,7 @@ if (allGroups === null){
 					<h2>Date: {group.date}</h2>
 					</>
 				})}
-
-
-				
 		</>
+		
 	)
 }
