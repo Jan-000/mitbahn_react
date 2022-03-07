@@ -39,7 +39,7 @@ router.get('/:id', (req, res, next) => {
 
 // update a group
 router.put('/:id', (req, res, next) => {
-  const { title, startStation, endStation, date } = req.body
+  const { startStation, endStation, date } = req.body
   Group.findByIdAndUpdate(req.params.id, {
     startStation,
     endStation,
