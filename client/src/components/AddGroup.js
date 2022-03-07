@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 
-export default function AddProject(props) {
+export default function AddGroup(props) {
 
 	const [title, setTitle] = useState('');
 	const [startStation, setStartStation] = useState('');
@@ -13,7 +13,7 @@ export default function AddProject(props) {
 		e.preventDefault()
 		// send the data from the state as a post request to 
 		// the backend
-		axios.post('/api/projects', { title, startStation, endStation, date }, { headers: { Authorization: `Bearer ${storedToken}` } })
+		axios.post('/api/groups', { title, startStation, endStation, date }, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
 				console.log(response)
 				console.log('test');
@@ -24,14 +24,14 @@ export default function AddProject(props) {
 		setStartStation('')
 		setEndStation('')
 		setDate('')
-		// refresh the list of the projects in ProjectList
-		props.refreshProjects()
+		// refresh the list of the groups in GroupList
+		props.refreshGroups()
 	}
 
 	return (
 		<>
 			<h1>Add your own ride</h1>
-			<p>marker to recognize addproject.js component</p>
+			<p>marker to recognize addgroup.js component</p>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="title">Title: </label>
 				<input

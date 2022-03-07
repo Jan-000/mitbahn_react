@@ -30,7 +30,7 @@ export default function Login() {
 				verifyStoredToken()
 					.then(() => {
 						// redirect to projects
-						navigate('/projects')
+						navigate('/groups')
 					})
 			})
 			.catch(err => {

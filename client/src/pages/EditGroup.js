@@ -18,25 +18,25 @@ export default function EditProject() {
 	const handleSubmit = e => {
 		e.preventDefault()
 		const requestBody = { title, startStation, endStation, date }
-		axios.put(`/api/projects/${id}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
+		axios.put(`/api/groups/${id}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(() => {
 				// this redirects using react router
-				navigate(`/projects/${id}`)
+				navigate(`/groups/${id}`)
 			})
 			.catch(err => console.log(err))
 	}
 
-	const deleteProject = () => {
-		axios.delete(`/api/projects/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+	const deleteGroup = () => {
+		axios.delete(`/api/groups/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(() => {
 				// redirect to the project list
-				navigate('/projects')
+				navigate('/groups')
 			})
 			.catch(err => console.log(err))
 	}
 
 	useEffect(() => {
-		axios.get(`/api/projects/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+		axios.get(`/api/groups/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
 				const { title, startStation, endStation, date } = response.data
 				setTitle(title)
@@ -82,7 +82,7 @@ export default function EditProject() {
 				/>
 				<button type="submit">Update this project</button>
 			</form>
-			<button onClick={deleteProject}>Delete this project</button>
+			<button onClick={deleteGroup}>Delete this project</button>
 			<p>this is editproject.js page</p>
 		</>
 
