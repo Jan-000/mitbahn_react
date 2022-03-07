@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import GroupsPage from './GroupsPage';
+// import GroupsPage from './GroupsPage';
 
 export default function SearchGroup(props) {
 	const [visible, setVisible] = useState(false);
@@ -83,7 +83,7 @@ export default function SearchGroup(props) {
 				{
 					visible && (<h1>test</h1>)
 				}
-				<GroupsPage />
+				{/* <GroupsPage /> */}
 		</>
 	)
 }
