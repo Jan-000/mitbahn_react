@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 // import GroupsPage from './GroupsPage';
 
@@ -8,6 +8,7 @@ export default function SearchGroup(props) {
 	const [startStation, setStartStation] = useState('');
 	const [endStation, setEndStation] = useState('');
 	const [date, setDate] = useState('');
+	const [allGroups, setAllGroups] = useState(null);
 
 	const handleSearchGroup = e => {
 		e.preventDefault()
@@ -35,6 +36,28 @@ export default function SearchGroup(props) {
 		// refresh the list of the projects in ProjectList
 		props.refreshGroups()
 	}
+
+	useEffect(()=>{
+
+		axios.get('/api/groups/groups')
+		.then ((groups)=>{
+			console.log("this is groups", groups)
+			setAllGroups(groups)
+
+		})
+	},[])
+	console.log("this is allGroups: ", allGroups)
+
+	let dynamicSearch
+
+	if (allGroups){
+	dynamicSearch = allGroups.data.filter((group)=>{
+	if  (group.title.includes(title))
+	return group
+})}
+
+if (allGroups === null){
+	return <>"Loading.."</>}
 
 	return (
 		<>
@@ -80,6 +103,9 @@ export default function SearchGroup(props) {
 				/>
 				<button type="submit">Search</button>
 				</form>
+				{dynamicSearch.map((group)=>{
+					return <h1>{group.title}</h1>
+				})}
 				{
 					visible && (<h1>test</h1>)
 				}
