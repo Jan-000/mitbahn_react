@@ -10,11 +10,7 @@ export default function GroupCard({ _id}) {
 				<h3>{_id}</h3>
 				
 			</Link>
-			{/* JG comment below */}
-				{/* <h3>{startStation}</h3>
-				<h3>{endStation}</h3>
-				<h3>{date}</h3> */}
-
+			
 			<p>marker to recognize GroupCard.js component</p>
 		</div>
 	)
