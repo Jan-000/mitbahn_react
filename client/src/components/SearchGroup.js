@@ -56,6 +56,28 @@ export default function SearchGroup(props) {
 	return group
 })}
 
+	if (allGroups){
+		dynamicSearch = allGroups.data.filter((group)=>{
+		if  (group.endStation.includes(endStation))
+		return group
+	})}
+	
+	if (allGroups){
+		dynamicSearch = allGroups.data.filter((group)=>{
+		if  (group.startStation.includes(startStation))
+		return group
+	})}
+
+
+	if (allGroups){
+		dynamicSearch = allGroups.data.filter((group)=>{
+		if  (group.date.includes(date))
+		return group
+	})}
+
+
+
+	
 if (allGroups === null){
 	return <>"Loading.."</>}
 
@@ -72,7 +94,7 @@ if (allGroups === null){
 					value= {title}
 					onChange= {e => setTitle(e.target.value)
 					}
-				/>
+				/><br></br><br></br>
 			<label htmlFor="startStation">From: </label>
 				<input
 					id="startStation"
@@ -81,7 +103,7 @@ if (allGroups === null){
 					value={startStation}
 					onChange={e => setStartStation(e.target.value)
 					}
-				/>
+				/><br></br><br></br>
 			<label htmlFor="endStation">To: </label>
 				<input
 					id="endStation"
@@ -90,7 +112,7 @@ if (allGroups === null){
 					value={endStation}
 					onChange={e => setEndStation(e.target.value)
 					}
-				/>
+				/><br></br><br></br>
 
 			<label htmlFor="date">Date: </label>
 				<input

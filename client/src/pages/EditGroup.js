@@ -59,6 +59,7 @@ export default function EditProject() {
 					onChange={e => setTitle(e.target.value)}
 					placeholder="xD"
 				/>
+				
 				<label htmlFor="title">From: </label>
 				<input
 					id="startStation"
