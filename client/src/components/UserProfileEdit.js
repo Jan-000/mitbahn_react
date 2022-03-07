@@ -44,7 +44,7 @@ export default function UserProfileEdit() {
     const [errorMessage, setErrorMessage] = useState(undefined);
     return (
         <>
-            <form  onSubmit={handleSubmit}>
+            <form action="/auth/userupdate" method="POST"  onSubmit={handleSubmit}>
                 <div>User Profile of {user.name}
                     {console.log(user)}
                     {/* {console.log(id)}

@@ -103,8 +103,8 @@ router.get('/verify', isAuthenticated, (req, res, next) => {
 // 				res.status(400).json({ message: 'User already exists' })
 // 				return
 // 			}
-
 // UPDATE PROFILE
+
 router.post("/userprofileedit", (req, res, next) => {
 	const {name, email, password}  = req.body;
    
@@ -113,7 +113,7 @@ router.post("/userprofileedit", (req, res, next) => {
   User.findByIdAndUpdate(req.body.id, { name, email, password}, {new: true} )
   // User.findByIdAndUpdate(req.session.user, { lastName: req.body.lastName}, {firstName: req.body.firstName}, {email:req.body.email })
   .then((user) => {
-  console.log('gets updated')  
+  console.log('gets updated')
   res.render('./userprofile')
   })
   .catch(err => { 
@@ -121,7 +121,7 @@ router.post("/userprofileedit", (req, res, next) => {
   })
   })
 
-  // DELETE
+// DELETE
 router.get('/delete', (req, res, next) => {
 	console.log('tried to delete User')
 	//later feature delete groups owned by this user as well
