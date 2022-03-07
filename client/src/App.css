@@ -53,7 +53,7 @@
   }
 }
 nav {
-  background-color:rgba(216, 0, 0, 0.671);
+  background-color:rgba(143, 3, 3, 0.644);
   transition: background-color 1s linear;
   -webkit-transition: background-color 0.2s linear;
 }
@@ -67,7 +67,7 @@ nav button:hover{
   }
 
 nav button{
-  background-color: rgb(135, 206, 250);
+  background-color:rgb(0, 162, 255);
   margin: 0 2px;
   position: relative;
   top: 0px;
