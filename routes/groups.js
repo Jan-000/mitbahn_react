@@ -1,57 +1,58 @@
-const Project = require("../models/Project");
+const Group = require("../models/Group");
+//const Project = require("../models/Project");
 
 const router = require("express").Router();
 
-// get all the projects
+// get all the groups
 router.get('/', (req, res, next) => {
-  Project.find()
-    .then(projects => {
-      res.status(200).json(projects)
+  Group.find()
+    .then(groups => {
+      res.status(200).json(groups)
     })
 });
 
-// create a project
+// create a group
 router.post('/', (req, res, next) => {
   const { title, startStation, endStation, date } = req.body
-  Project.create({ title, startStation, endStation, date })
-    .then(project => {
-      res.status(201).json(project)
+  Group.create({ title, startStation, endStation, date })
+    .then(group => {
+      res.status(201).json(group)
     })
     .catch(err => next(err))
 })
 
-// get a specific project
+// get a specific group
 router.get('/:id', (req, res, next) => {
-  Project.findById(req.params.id)
-    .then(project => {
+  Group.findById(req.params.id)
+    .then(group => {
       // check for a valid mongoobject id
       // mongoose.Types.ObjectId.isValid(<id>) 
-      if (!project) {
-        res.status(404).json(project)
+      if (!group) {
+        res.status(404).json(group)
       } else {
-        res.status(200).json(project)
+        res.status(200).json(group)
       }
     })
 });
 
-// update a project
+// update a group
 router.put('/:id', (req, res, next) => {
   const { title, startStation, endStation, date } = req.body
-  Project.findByIdAndUpdate(req.params.id, {
+  Group.findByIdAndUpdate(req.params.id, {
     title,
     startStation,
     endStation,
     date
   }, { new: true })
-    .then(updatedProject => {
-      res.status(200).json(updatedProject)
+    .then(updatedGroup => {
+      res.status(200).json(updatedGroup)
     })
     .catch(err => next(err))
 });
 
-// delete a project
+// delete a group
 router.delete('/:id', (req, res, next) => {
-  Project.findByIdAndDelete(req.params.id)
+  Group.findByIdAndDelete(req.params.id)
     .then(() => {
       res.status(200).json({ message: 'project deleted' })
     })
