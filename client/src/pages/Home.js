@@ -1,11 +1,17 @@
 import React from 'react'
-import UserProfile from '../components/UserProfile'
+
+import GoToSearch from "../components/GoToSearch"
+import LoggedUserInfo from '../components/LoggedUserInfo'
 
 
 export default function Home() {
-	return (
+	return (<>
 		<h1>This is the Home Page
 		</h1>
+		<GoToSearch />
+User email will be shown here (in progress)
+{/* <LoggedUserInfo /> */}
+		</>
 	)
 }
 
