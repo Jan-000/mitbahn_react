@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default function SearchGroup(props) {
 
-	const [title, setTitle] = useState('');
+
 	const [startStation, setStartStation] = useState('');
 	const [endStation, setEndStation] = useState('');
 	const [date, setDate] = useState('');
@@ -14,7 +14,7 @@ export default function SearchGroup(props) {
 		e.preventDefault()
 		// send the data from the state as a post request to 
 		// the backend
-		axios.post('/api/groups', { title, startStation, endStation, date }, { headers: { Authorization: `Bearer ${storedToken}` } })
+		axios.post('/api/groups', { startStation, endStation, date }, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
 				console.log(response)
 				console.log('test');
@@ -42,11 +42,6 @@ export default function SearchGroup(props) {
 
 	let dynamicSearch
 
-	if (allGroups){
-	dynamicSearch = allGroups.data.filter((group)=>{
-	if  (group.title.includes(title))
-	return group
-	})}
 
 	if (allGroups){
 		dynamicSearch = allGroups.data.filter((group)=>{
