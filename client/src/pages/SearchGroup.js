@@ -1,19 +1,16 @@
 
-import React from 'react'
-import SearchGroup from '../components/SearchGroup ';
-import ProductsPage from '../components/ProductsPage'
+// import React from 'react'
+// import SearchGroup from '../components/SearchGroup ';
+// import ProductsPage from '../components/ProductsPage'
 
-export default function SrcGroup() {
-	return (
-		<h1>This is the search group page
-		</h1>
+// export default function SrcGroup() {
+// 	return (
+// 		<h1>This is the search group page
+// 		</h1>
 
 		
-	)
-}
-
-
-
+// 	)
+// }
 
 // import React, { useState, useContext } from 'react'
 // import { Link, useNavigate } from 'react-router-dom'

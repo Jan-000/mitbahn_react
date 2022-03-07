@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import ProductsPage from './ProductsPage';
+import res from 'express/lib/response';
 
 export default function SearchGroup(props) {
 	const [visible, setVisible] = useState(false);
@@ -12,6 +13,9 @@ export default function SearchGroup(props) {
 	const handleSearchGroup = e => {
 		e.preventDefault()
 		setVisible(true)
+		console.log("xD check")
+		// res.render(<GroupSearchResults />);
+
 	}
 	const storedToken = localStorage.getItem('authToken')
 	const handleSubmit = e => {

@@ -10,7 +10,7 @@ import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import UserProfile from './components/UserProfile';
 
-import SearchGroup from './components/SearchGroup';
+// import SearchGroup from './components/SearchGroup';
 import ProductsPage from './components/ProductsPage'
 
 
@@ -38,10 +38,11 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/projects/:id' element={<ProjectDetails />} />
         <Route path='/projects/edit/:id' element={<EditProject />} />
-        <Route path='/searchgroup' element={<SearchGroup />} />
+        {/* <Route path='/searchgroup' element={<SearchGroup />} /> */}
         <Route path='/userprofile' element={<UserProfile />} />
         <Route path='/userprofileedit/:id' element={<UserProfileEdit />} />
         <Route path='/userprofiledeleted/:id' element={<UserProfileDeleted />} />
+        <Route path='/GroupSearchResult' />
 
       </Routes>
     </div>
