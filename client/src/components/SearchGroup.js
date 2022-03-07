@@ -12,6 +12,9 @@ export default function SearchGroup(props) {
 	const handleSearchGroup = e => {
 		e.preventDefault()
 		setVisible(true)
+		console.log("xD check")
+		// res.render(<GroupSearchResults />);
+
 	}
 	const storedToken = localStorage.getItem('authToken')
 	const handleSubmit = e => {

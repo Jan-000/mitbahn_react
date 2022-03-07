@@ -42,6 +42,7 @@ function App() {
         <Route path='/userprofile' element={<UserProfile />} />
         <Route path='/userprofileedit/:id' element={<UserProfileEdit />} />
         <Route path='/userprofiledeleted/:id' element={<UserProfileDeleted />} />
+        <Route path='/GroupSearchResult' />
 
       </Routes>
     </div>
