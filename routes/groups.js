@@ -4,11 +4,13 @@ const Group = require("../models/Group");
 const router = require("express").Router();
 
 // get all the groups
-router.get('/', (req, res, next) => {
+router.get('/groups', (req, res, next) => {
   Group.find()
     .then(groups => {
+      console.log("this us groups", groups)
       res.status(200).json(groups)
     })
+    .catch(err => next(err))
 });
 
 // create a group
@@ -60,9 +62,9 @@ router.delete('/:id', (req, res, next) => {
 });
 
 // search for a ride
-router.get('/', (req, res, next) => {
-  console.log("search for a ride route")
-    })
+// router.get('/', (req, res, next) => {
+//   console.log("search for a ride route")
+//     })
 
 //results of group search
 router.post('/projectSearchUrl', (req, res, next) => {
