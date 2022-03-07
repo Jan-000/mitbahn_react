@@ -7,5 +7,5 @@ const groupSchema = new Schema({
 	date: String
 });
 
-const Group = mongoose.model('Project', groupSchema);
+const Group = mongoose.model('Groups', groupSchema);
 module.exports = Group;
