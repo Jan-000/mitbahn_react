@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import jsonData from './../data.json';
-import ProductTable from "./ProductTable"
-//import jsonDataBis from ""
+import jsonData from '../data.json';
+import GroupTable from "./GroupTable"
 
 let runningList = [...jsonData]
 
-function ProductsPage () {
-  const [products, setProducts] = useState(jsonData);
+function GroupsPage () {
+  const [groups, setGroups] = useState(jsonData);
   const [search, setSearch] = useState("");
   const [stock, setStock] = useState(false);
   
@@ -30,7 +29,7 @@ function ProductsPage () {
 
   const updateSearch = (e) => {
 runningList = [...filterList(jsonData, e.target.value, stock)];
-setProducts(runningList)
+setGroups(runningList)
 setSearch(e.target.value)
   }
   
@@ -40,14 +39,14 @@ setSearch(e.target.value)
        <label>Search by station or date</label> <input
           id="username"
           type="text"
-          placeholder = "search products"
+          placeholder = "search groups"
           value = {search}
           onChange={(e)=>updateSearch(e)}>
         </input>
-        <ProductTable groups={products} />
-        <p>products page</p>
+        <GroupTable groups={groups} />
+        <p>groups page</p>
       </div>    
   )
 }
 
-export default ProductsPage;
+export default GroupsPage;

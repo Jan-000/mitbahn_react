@@ -14,7 +14,7 @@ export default function Navbar() {
 			{isLoggedIn ?
 				(
 					<>
-						<Link to='/projects'>
+						<Link to='/groups'>
 							<button>Rides</button>
 						</Link>
 						<button onClick={logoutUser}>Logout</button>

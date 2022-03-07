@@ -1,7 +1,7 @@
 
-// import React from 'react'
-// import SearchGroup from '../components/SearchGroup ';
-// import ProductsPage from '../components/ProductsPage'
+import React from 'react'
+import SearchGroup from '../components/SearchGroup ';
+import GroupsPage from '../components/GroupsPage'
 
 // export default function SrcGroup() {
 // 	return (

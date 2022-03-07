@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 // import { startSession } from '../../../models/Project';
 
 
-export default function ProjectCard({ title, _id}) {
+export default function GroupCard({ title, _id}) {
 	return (
 		<div>
-			<Link to={`/projects/${_id}`}>
+			<Link to={`/groups/${_id}`}>
 				<h3>{title}</h3>
 				
 			</Link>
@@ -15,7 +15,7 @@ export default function ProjectCard({ title, _id}) {
 				<h3>{endStation}</h3>
 				<h3>{date}</h3> */}
 
-			<p>marker to recognize ProjectCard.js component</p>
+			<p>marker to recognize GroupCard.js component</p>
 		</div>
 	)
 }

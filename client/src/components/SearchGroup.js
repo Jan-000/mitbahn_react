@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import ProductsPage from './ProductsPage';
-import res from 'express/lib/response';
+import GroupsPage from './GroupsPage';
 
 export default function SearchGroup(props) {
 	const [visible, setVisible] = useState(false);
@@ -22,7 +21,7 @@ export default function SearchGroup(props) {
 		e.preventDefault()
 		// send the data from the state as a post request to 
 		// the backend
-		axios.post('/api/projects', { title, startStation, endStation, date }, { headers: { Authorization: `Bearer ${storedToken}` } })
+		axios.post('/api/groups', { title, startStation, endStation, date }, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
 				console.log(response)
 				console.log('test');
@@ -34,7 +33,7 @@ export default function SearchGroup(props) {
 		setEndStation('')
 		setDate('')
 		// refresh the list of the projects in ProjectList
-		props.refreshProjects()
+		props.refreshGroups()
 	}
 
 	return (
@@ -84,7 +83,7 @@ export default function SearchGroup(props) {
 				{
 					visible && (<h1>test</h1>)
 				}
-				<ProductsPage />
+				<GroupsPage />
 		</>
 	)
 }
