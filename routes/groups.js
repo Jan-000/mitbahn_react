@@ -1,5 +1,5 @@
 const Group = require("../models/Group");
-//const Project = require("../models/Project");
+
 
 const router = require("express").Router();
 
@@ -59,23 +59,6 @@ router.delete('/:id', (req, res, next) => {
     })
     .catch(err => next(err))
 });
-
-// search for a ride
-// router.get('/', (req, res, next) => {
-//   console.log("search for a ride route")
-//     })
-
-//results of group search
-router.post('/projectSearchUrl', (req, res, next) => {
-  //console.log ('tried to open redirect')
-  const { startStation, endStation, date } = req.body;
-  Project.find({ startStation }).then((groups)=> {
-      console.log("LOL IT WORKED")
-/*res.render taken from Mitbahn1 */
-  })
-});
-
-
   
 
 // display user details
