@@ -43,22 +43,22 @@ export default function SearchGroup(props) {
 	let dynamicSearch
 
 
-	if (allGroups){
-		dynamicSearch = allGroups.data.filter((group)=>{
-		if  (group.endStation.includes(endStation))
-		return group
-	})};
+	// if (allGroups){
+	// 	dynamicSearch = allGroups.data.filter((group)=>{
+	// 	if  (group.endStation.includes(endStation))
+	// 	return group
+	// })};
 	
-	if (allGroups){
-		dynamicSearch = allGroups.data.filter((group)=>{
-		if  (group.startStation.includes(startStation))
-		return group
-	})};
+	// if (allGroups){
+	// 	dynamicSearch = allGroups.data.filter((group)=>{
+	// 	if  (group.startStation.includes(startStation))
+	// 	return group
+	// })};
 
 
 	if (allGroups){
 		dynamicSearch = allGroups.data.filter((group)=>{
-		if  (group.date.includes(date))
+		if  ((group.date.includes(date))&&(group.endStation.includes(endStation))&&(group.startStation.includes(startStation)))
 		return group
 	})}
 
