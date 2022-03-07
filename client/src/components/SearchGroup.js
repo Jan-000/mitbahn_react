@@ -1,22 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-// import GroupsPage from './GroupsPage';
 
 export default function SearchGroup(props) {
-	const [visible, setVisible] = useState(false);
+
 	const [title, setTitle] = useState('');
 	const [startStation, setStartStation] = useState('');
 	const [endStation, setEndStation] = useState('');
 	const [date, setDate] = useState('');
 	const [allGroups, setAllGroups] = useState(null);
 
-	const handleSearchGroup = e => {
-		e.preventDefault()
-		setVisible(true)
-		console.log("xD check")
-		// res.render(<GroupSearchResults />);
-
-	}
 	const storedToken = localStorage.getItem('authToken')
 	const handleSubmit = e => {
 		e.preventDefault()
@@ -29,7 +21,7 @@ export default function SearchGroup(props) {
 			})
 			.catch(err => console.log(err))
 		// reset the form
-		setTitle('')
+
 		setStartStation('')
 		setEndStation('')
 		setDate('')
@@ -54,7 +46,7 @@ export default function SearchGroup(props) {
 	dynamicSearch = allGroups.data.filter((group)=>{
 	if  (group.title.includes(title))
 	return group
-})}
+	})}
 
 	if (allGroups){
 		dynamicSearch = allGroups.data.filter((group)=>{
@@ -75,8 +67,6 @@ export default function SearchGroup(props) {
 		return group
 	})}
 
-
-
 	
 if (allGroups === null){
 	return <>"Loading.."</>}
@@ -85,16 +75,8 @@ if (allGroups === null){
 		<>
 			
 			<h1>Search for a train</h1>
-			<form onSubmit= {handleSearchGroup}>
-			<label htmlFor="title">Title to keep track JG </label>
-				<input
-					id="title"
-					type="text"
-					placeholder="xD"
-					value= {title}
-					onChange= {e => setTitle(e.target.value)
-					}
-				/><br></br><br></br>
+
+			
 			<label htmlFor="startStation">From: </label>
 				<input
 					id="startStation"
@@ -123,15 +105,17 @@ if (allGroups === null){
 					onChange={e => setDate(e.target.value)
 					}
 				/>
-				<button type="submit">Search</button>
-				</form>
+
 				{dynamicSearch.map((group)=>{
-					return <h1>{group.title}</h1>
+					return <>
+					<h1>From: {group.startStation}</h1> 
+					<h2>To: {group.endStation}</h2> 
+					<h2>Date: {group.date}</h2>
+					</>
 				})}
-				{
-					visible && (<h1>test</h1>)
-				}
-				{/* <GroupsPage /> */}
+
+
+				
 		</>
 	)
 }
