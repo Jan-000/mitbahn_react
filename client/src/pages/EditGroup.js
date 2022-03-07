@@ -68,7 +68,7 @@ export default function EditProject() {
 				<label htmlFor="date">To: </label>
 				<input
 					id="date"
-					type="text"
+					type="number"
 					value={date}
 					onChange={e => setDate(e.target.value)}
 				/>
