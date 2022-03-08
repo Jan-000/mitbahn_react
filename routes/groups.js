@@ -17,8 +17,9 @@ router.get('/groups', (req, res, next) => {
 
 // create a group
 router.post('/', (req, res, next) => {
+  console.log("payload is", req.payload)
   const { startStation, endStation, date, owner } = req.body
-  Group.create({ startStation, endStation, date, owner })
+  Group.create({ startStation, endStation, date, owner, guests: [req.payload._id] })
 
     .then(group => {
       res.status(201).json(group)
@@ -82,11 +83,8 @@ router.get('/user/:id', (req, res, next) => {
 router.put("/joingroup/:id", (req, res, next) => {
   console.log("joingroup route was initiated");
   console.log("here is req.params.id", req.params.id);
-  console.log("here is req.params", req.params);
-  
 
 const user = req.body.user
-console.log("here is user ", req.body.user);  
 
 const id = req.params.id;
 console.log(id)
@@ -97,8 +95,9 @@ console.log(user._id)
      // console.log("this is group", group);
       console.log("dit is reqsession id", user, group);
     //group.numOfGuests++
-   //res.render('groups/userjoinstrip')       
+     
    console.log("it really worked")
+   console.log("this is group backend", group.guests)
 });
 });
 
