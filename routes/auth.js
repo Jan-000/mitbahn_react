@@ -106,35 +106,42 @@ router.get('/verify', isAuthenticated, (req, res, next) => {
 // 			}
 
 // UPDATE PROFILE
-router.post("/userprofileedit", (req, res, next) => {
+router.put("/userprofileedit/:id", (req, res, next) => {
 	const {name, email, password}  = req.body;
    
-  console.log(req.body)
+  console.log("reqParams",req.params)
   
-  User.findByIdAndUpdate(req.body.id, { name, email, password}, {new: true} )
+  User.findByIdAndUpdate(req.params.id,
+	 { name, email, password}, {new: true} )
   // User.findByIdAndUpdate(req.session.user, { lastName: req.body.lastName}, {firstName: req.body.firstName}, {email:req.body.email })
   .then((user) => {
   console.log('gets updated')
-  res.render('./userprofile')
-  setTheUsername(user)
+  res.status(200).json(user)
   })
   .catch(err => { 
 	next(err);
   })
   })
 
+router.get('/user/:id', (req, res, next) => {
+	User.findById(req.params.id)
+	.then((user) => {
+		res.status(200).json(user)
+	})
+	.catch(err => {
+		next(err)
+	})
+})
+
 // DELETE
-router.get('/delete', (req, res, next) => {
+router.delete('/userprofileedit/:id', (req, res, next) => {
 	console.log('tried to delete User')
 	//later feature delete groups owned by this user as well
-	User.findByIdAndDelete(req.body.user).then(()=>{
-	  //destroy session and delete database entry
-	  req.body.destroy()
-	  res.redirect('/auth/signup')
+	User.findByIdAndDelete(req.params.id)
+	.then(response=>{
+		res.status(200).json()
 	})
   });
-  //____________________________________
-
 
 
 module.exports = router;

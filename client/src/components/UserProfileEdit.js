@@ -6,14 +6,15 @@ import { AuthContext } from '../context/auth'
 export default function UserProfileEdit() {
 
     const storedToken = localStorage.getItem('authToken')
-    const { user , setUser} = useContext(AuthContext)
-    // const deleteUser = userId => {
+    const { user, setUser } = useContext(AuthContext)
+    const { logoutUser } = useContext(AuthContext)
+    const navigate = useNavigate()
 
+    const { id } = useParams()
     const [name, setName] = useState(user.name);
     const [email, setEmail] = useState(user.email);
     const [password, setPassword] = useState(user.password);
-    const id = user._id
-    
+
     // useEffect(() => {
     //     axios.post(`/api/user/${user._id}
     // `, { headers: { Authorization: `Bearer ${storedToken}` } })
@@ -23,35 +24,51 @@ export default function UserProfileEdit() {
     //         .catch(err => console.log(err))
     // }, [])
 
-    const navigate = useNavigate()
     const handleSubmit = e => {
         e.preventDefault()
-        const requestBody = { id, name, email, password }
-        axios.post('/api/auth/userprofileedit', requestBody)
+        const requestBody = { name, email, password }
+        axios.put(`/api/auth/userprofileedit/${id}`, requestBody)
             .then(response => {
-                navigate('/login')
-                setUser(response.data.user)
+                console.log(response, 'response')
+                // setUser(response.data.user)
+                // logoutUser()
+                navigate('/userprofile')
+
             })
-            .catch(err => {
-                const errorDescription = err.response.data.errorMessage
-                setErrorMessage(errorDescription)
-            })
+            .catch(err => console.log(err))
     }
 
-    
     const handleEmail = e => setEmail(e.target.value)
     const handleName = e => setName(e.target.value)
     const handlePassword = e => setPassword(e.target.value)
     const [errorMessage, setErrorMessage] = useState(undefined);
+
+	const deleteUser = () => {
+		axios.delete(`/api/auth/userprofileedit/${user._id}`)
+			.then(() => {
+				// redirect to the main page
+				navigate('/')
+			})
+			.catch(err => console.log(err))
+	}
+
+	// useEffect(() => {
+	// 	axios.get('/api/userprofileedit/:id')
+	// 		.then(response => {
+	// 			const { id, name, email, password } = response.data
+	// 			setTitle(title)
+	// 			setDescription(description)
+	// 		})
+	// 		.catch(err => console.log(err))
+	// }, [])
+
     return (
         <>
             <form onSubmit={handleSubmit}>
                 <div>User Profile of {user.name}
-                    {console.log(user)}
                     {/* {console.log(id)}
                     {console.log(user._id)} */}
                 </div>
-
                 <label>Name:</label>
                 <input type='text' placeholder={name} name='Name' value={name} onChange={handleName} />
                 <label>Email:</label>
@@ -62,16 +79,11 @@ export default function UserProfileEdit() {
                 <button type='submit'>Update Profile</button>
                 {errorMessage && <h5>{errorMessage}</h5>}
             </form>
-            <form>
-                <div id='delete-button'>
-                    <button id='profile.delete' href='/routes/auth/delete'>Delete Profile</button>
-                </div>
+        
+            <button onClick={deleteUser} className="btn-delete">Delete Profile</button>
 
-        </form>
-                {/* <button onClick={() => deleteUser(user._id)} className="btn-delete"> */}
-
-                {/* Delete 
+            {/* Delete 
             </button> */}
-            </>
+        </>
     )
 }
