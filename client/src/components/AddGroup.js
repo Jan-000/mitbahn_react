@@ -57,7 +57,7 @@ export default function AddGroup(props) {
 				<label htmlFor="date">Date: </label>
 				<input
 					id="date"
-					type="text"
+					type="DATE"
 					value={date}
 					onChange={e => setDate(e.target.value)}
 				/>
