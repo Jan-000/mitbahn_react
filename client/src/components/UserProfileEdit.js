@@ -6,7 +6,7 @@ import { AuthContext } from '../context/auth'
 export default function UserProfileEdit() {
 
     const storedToken = localStorage.getItem('authToken')
-    const { user } = useContext(AuthContext)
+    const { user , setUser} = useContext(AuthContext)
     // const deleteUser = userId => {
 
     const [name, setName] = useState(user.name);
@@ -30,6 +30,7 @@ export default function UserProfileEdit() {
         axios.post('/api/auth/userprofileedit', requestBody)
             .then(response => {
                 navigate('/login')
+                setUser(response.data.user)
             })
             .catch(err => {
                 const errorDescription = err.response.data.errorMessage
@@ -44,7 +45,7 @@ export default function UserProfileEdit() {
     const [errorMessage, setErrorMessage] = useState(undefined);
     return (
         <>
-            <form action="/auth/userupdate" method="POST"  onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div>User Profile of {user.name}
                     {console.log(user)}
                     {/* {console.log(id)}

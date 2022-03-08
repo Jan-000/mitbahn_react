@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState , useContext} from 'react'
 import axios from 'axios';
+import {AuthContext} from '../context/auth'
 
 export default function AddGroup(props) {
 
@@ -7,13 +8,16 @@ export default function AddGroup(props) {
 	const [startStation, setStartStation] = useState('');
 	const [endStation, setEndStation] = useState('');
 	const [date, setDate] = useState('');
+	const { user } = useContext(AuthContext)
 	
 	const storedToken = localStorage.getItem('authToken')
 	const handleSubmit = e => {
 		e.preventDefault()
 		// send the data from the state as a post request to 
 		// the backend
-		axios.post('/api/groups', { startStation, endStation, date }, { headers: { Authorization: `Bearer ${storedToken}` } })
+		const owner=user._id
+		axios.post('/api/groups', { startStation, endStation, date, owner }, { headers: { Authorization: `Bearer ${storedToken}` } })
+
 			.then(response => {
 				console.log(response)
 				console.log('test');
@@ -53,7 +57,7 @@ export default function AddGroup(props) {
 				<label htmlFor="date">Date: </label>
 				<input
 					id="date"
-					type="text"
+					type="DATE"
 					value={date}
 					onChange={e => setDate(e.target.value)}
 				/>

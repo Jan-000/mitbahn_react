@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const User = require('../models/User')
 const jwt = require('jsonwebtoken');
 const { isAuthenticated } = require("../middleware/jwt");
+const { setTheUsername } = require("whatwg-url");
 
 // const { user } = require('../client/src/context/auth')
 
@@ -103,8 +104,8 @@ router.get('/verify', isAuthenticated, (req, res, next) => {
 // 				res.status(400).json({ message: 'User already exists' })
 // 				return
 // 			}
-// UPDATE PROFILE
 
+// UPDATE PROFILE
 router.post("/userprofileedit", (req, res, next) => {
 	const {name, email, password}  = req.body;
    
@@ -115,6 +116,7 @@ router.post("/userprofileedit", (req, res, next) => {
   .then((user) => {
   console.log('gets updated')
   res.render('./userprofile')
+  setTheUsername(user)
   })
   .catch(err => { 
 	next(err);
@@ -125,9 +127,9 @@ router.post("/userprofileedit", (req, res, next) => {
 router.get('/delete', (req, res, next) => {
 	console.log('tried to delete User')
 	//later feature delete groups owned by this user as well
-	User.findByIdAndDelete(req.session.user).then(()=>{
+	User.findByIdAndDelete(req.body.user).then(()=>{
 	  //destroy session and delete database entry
-	  req.session.destroy()
+	  req.body.destroy()
 	  res.redirect('/auth/signup')
 	})
   });

@@ -10,24 +10,24 @@ export default function SearchGroup(props) {
 	const [allGroups, setAllGroups] = useState(null);
 
 	const storedToken = localStorage.getItem('authToken')
-	const handleSubmit = e => {
-		e.preventDefault()
-		// send the data from the state as a post request to 
-		// the backend
-		axios.post('/api/groups', { startStation, endStation, date }, { headers: { Authorization: `Bearer ${storedToken}` } })
-			.then(response => {
-				console.log(response)
-				console.log('test');
-			})
-			.catch(err => console.log(err))
-		// reset the form
+	// const handleSubmit = e => {
+	// 	e.preventDefault()
+	// 	// send the data from the state as a post request to 
+	// 	// the backend
+	// 	axios.post('/api/groups', { startStation, endStation, date }, { headers: { Authorization: `Bearer ${storedToken}` } })
+	// 		.then(response => {
+	// 			console.log(response)
+	// 			console.log('test');
+	// 		})
+	// 		.catch(err => console.log(err))
+	// 	// reset the form
 
-		setStartStation('')
-		setEndStation('')
-		setDate('')
-		// refresh the list of the projects in ProjectList
-		props.refreshGroups()
-	}
+	// 	setStartStation('')
+	// 	setEndStation('')
+	// 	setDate('')
+	// 	// refresh the list of the projects in ProjectList
+	// 	props.refreshGroups()
+	// }
 
 	useEffect(()=>{
 
