@@ -50,7 +50,7 @@ export default function GroupDetails() {
 					</Link>
 				</>
 			}
-			{group && group.numOfGuests < 5 && !group.guests.includes(user._id)  ? (
+			{group && group.numOfGuests < 5 && !group.guests.includes(user._id) && !group.owner.includes(user._id) ? (
 				<>
 				<button onClick={joinGroup}>Join this group</button>
 				</>
