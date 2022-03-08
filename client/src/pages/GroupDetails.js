@@ -18,6 +18,7 @@ export default function GroupDetails() {
 		axios.put(`/api/groups/joingroup/${id}`, { user }, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
 				console.log("this is response", response)
+
 				setGroup(response.data)
 			})
 			.catch(err => console.log(err))
@@ -35,6 +36,7 @@ export default function GroupDetails() {
 			.catch(err => console.log(err))
 	}, [])
 
+	console.log("this is group1", group)
 	return (
 		<>
 			{group === null ? <div>Loading ...</div> :
@@ -49,9 +51,17 @@ export default function GroupDetails() {
 					</Link>
 				</>
 			}
+{/* less than five, cant join the group, disable multiple participation */}
+			{group && group.numOfGuests < 5 ? (
+				<>
+				<button onClick={joinGroup}>Join this group</button>
+				</>
+				) : 
+				(<>
+				</>)
+				}
 
-			<button onClick={joinGroup}>Join this group</button>
-			
+			{console.log("this is group2", group)}
 			</>
 	)
 }
