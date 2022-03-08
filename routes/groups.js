@@ -13,8 +13,9 @@ router.get('/', (req, res, next) => {
 
 // create a group
 router.post('/', (req, res, next) => {
-  const { title, startStation, endStation, date } = req.body
-  Group.create({ title, startStation, endStation, date })
+  const { title, startStation, endStation, date, owner } = req.body
+  console.log(owner)
+  Group.create({ title, startStation, endStation, date, owner })
     .then(group => {
       res.status(201).json(group)
     })
