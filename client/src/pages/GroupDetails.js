@@ -9,6 +9,17 @@ export default function GroupDetails() {
 
 	const [group, setGroup] = useState(null);
 	const storedToken = localStorage.getItem('authToken')
+		
+	const joinGroup = () => {
+		console.log(storedToken)
+		axios.put(`/api/groups/joingroup/${id}`, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
+			.then(response => {
+				console.log(response)
+				setGroup(response.data)
+			})
+			.catch(err => console.log(err))
+	}
+	
 
 	useEffect(() => {
 		// request to the backend
@@ -33,6 +44,10 @@ export default function GroupDetails() {
 						<button>Edit this group</button>
 					</Link>
 				</>
-			}</>
+			}
+
+			<button onClick={joinGroup}>Join this group</button>
+			
+			</>
 	)
 }

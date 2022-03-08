@@ -76,6 +76,23 @@ router.get('/user/:id', (req, res, next) => {
     })
 });
 
+//
+router.put("/joingroup/:id", (req, res, next) => {
+  console.log("joingroup route was initiated");
+  console.log("here is req.params.id", req.params.id);
+  console.log("here is req.params.id", req.params);
+// const user = req.session.user;
+//   const id = req.params.id;
+//   Group.findByIdAndUpdate(id, { $push: { guests: user._id }, $inc: {numOfGuests: +1}},
+//       { new: true })
+//       .then(group => {
+//      // console.log("this is group", group);
+//       console.log("dit is reqsession id", user, group);
+//     //group.numOfGuests++
+//     res.render('groups/userjoinstrip')       
+// });
+});
+
 
 
 
