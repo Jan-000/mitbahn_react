@@ -57,7 +57,7 @@ export default function Login() {
 			{/* JG comment below: */}
 			<p>marking of the src/pages/login.js which is a big function</p>
 			<h3>Don't have an account?</h3>
-			<Link to='/signup'>Signup</Link>
+			<button><Link to='/signup'>Signup</Link></button>
 		</>
 	)
 }

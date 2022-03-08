@@ -30,10 +30,10 @@ export default function Navbar() {
 						<Link to='/login'>
 							<button>Login</button>
 						</Link>
-						
+
 					</>
 				)}
-				<p>this is navbar.js component</p>
+			<p>this is navbar.js component</p>
 		</nav>
 	)
 }
