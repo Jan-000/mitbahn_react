@@ -3,9 +3,11 @@ const bcrypt = require('bcryptjs')
 const User = require('../models/User')
 const jwt = require('jsonwebtoken');
 const { isAuthenticated } = require("../middleware/jwt");
+const { setTheUsername } = require("whatwg-url");
 
 // const { user } = require('../client/src/context/auth')
 
+// SIGNUP
 router.post('/signup', (req, res, next) => {
 	const { email, password, name } = req.body
 	// check if email or name or password are empty
@@ -48,6 +50,7 @@ router.post('/signup', (req, res, next) => {
 		})
 });
 
+// LOGIN
 router.post('/login', (req, res, next) => {
 	const { email, password } = req.body
 	if (email === '' || password === '') {
@@ -91,24 +94,46 @@ router.get('/verify', isAuthenticated, (req, res, next) => {
 // 	res.status(400).json({ message: 'err' })
 // });
 
+
+
+//=====> change to if (email found in db){ err msg "mailadress already in use"}
+// User.findOne({ email })
+// 		.then(foundUser => {
+// 			// if the user already exists send an error
+// 			if (foundUser) {
+// 				res.status(400).json({ message: 'User already exists' })
+// 				return
+// 			}
+
+// UPDATE PROFILE
 router.post("/userprofileedit", (req, res, next) => {
 	const {name, email, password}  = req.body;
    
   console.log(req.body)
   
-  User.findByIdAndUpdate(req.user._id, { name, email, password}, {new: true} )
+  User.findByIdAndUpdate(req.body.id, { name, email, password}, {new: true} )
   // User.findByIdAndUpdate(req.session.user, { lastName: req.body.lastName}, {firstName: req.body.firstName}, {email:req.body.email })
   .then((user) => {
   console.log('gets updated')
-  req.session.user = user
-  
-  res.redirect('/auth/userprofile')
+  res.render('./userprofile')
+  setTheUsername(user)
   })
   .catch(err => { 
 	next(err);
   })
   })
 
+// DELETE
+router.get('/delete', (req, res, next) => {
+	console.log('tried to delete User')
+	//later feature delete groups owned by this user as well
+	User.findByIdAndDelete(req.body.user).then(()=>{
+	  //destroy session and delete database entry
+	  req.body.destroy()
+	  res.redirect('/auth/signup')
+	})
+  });
+  //____________________________________
 
 
 

@@ -1,21 +1,27 @@
 const Group = require("../models/Group");
-//const Project = require("../models/Project");
+
 
 const router = require("express").Router();
 
 // get all the groups
-router.get('/', (req, res, next) => {
+router.get('/groups', (req, res, next) => {
   Group.find()
     .then(groups => {
+      console.log("this us groups", groups)
       res.status(200).json(groups)
     })
+    .catch(err => next(err))
 });
 
 // create a group
 router.post('/', (req, res, next) => {
   const { title, startStation, endStation, date, owner } = req.body
-  console.log(owner)
+  
   Group.create({ title, startStation, endStation, date, owner })
+
+  const { startStation, endStation, date } = req.body
+  Group.create({ startStation, endStation, date })
+
     .then(group => {
       res.status(201).json(group)
     })
@@ -38,9 +44,8 @@ router.get('/:id', (req, res, next) => {
 
 // update a group
 router.put('/:id', (req, res, next) => {
-  const { title, startStation, endStation, date } = req.body
+  const { startStation, endStation, date } = req.body
   Group.findByIdAndUpdate(req.params.id, {
-    title,
     startStation,
     endStation,
     date
@@ -59,11 +64,7 @@ router.delete('/:id', (req, res, next) => {
     })
     .catch(err => next(err))
 });
-
-//search for a ride
-router.get('/', (req, res, next) => {
-  console.log("search for a ride route")
-    })
+  
 
 // display user details
 router.get('/user/:id', (req, res, next) => {

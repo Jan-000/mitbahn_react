@@ -10,12 +10,14 @@ import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import UserProfile from './components/UserProfile';
 
+
 import SearchGroup from './components/SearchGroup';
-import GroupsPage from './components/GroupsPage'
+// import GroupsPage from './components/GroupsPage'
 
 
 import UserProfileEdit from './components/UserProfileEdit'
 import UserProfileDeleted from './components/UserProfileDeleted';
+import LoggedUserInfo from './components/LoggedUserInfo';
 
 function App() {
   return (

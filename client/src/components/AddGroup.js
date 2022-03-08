@@ -4,7 +4,7 @@ import {AuthContext} from '../context/auth'
 
 export default function AddGroup(props) {
 
-	const [title, setTitle] = useState('');
+
 	const [startStation, setStartStation] = useState('');
 	const [endStation, setEndStation] = useState('');
 	const [date, setDate] = useState('');
@@ -17,13 +17,14 @@ export default function AddGroup(props) {
 		// the backend
 		const owner=user._id
 		axios.post('/api/groups', { title, startStation, endStation, date, owner }, { headers: { Authorization: `Bearer ${storedToken}` } })
+
 			.then(response => {
 				console.log(response)
 				console.log('test');
 			})
 			.catch(err => console.log(err))
 		// reset the form
-		setTitle('')
+
 		setStartStation('')
 		setEndStation('')
 		setDate('')
@@ -36,13 +37,7 @@ export default function AddGroup(props) {
 			<h1>Add your own ride</h1>
 			<p>marker to recognize addgroup.js component</p>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="title">Title: </label>
-				<input
-					id="title"
-					type="text"
-					value={title}
-					onChange={e => setTitle(e.target.value)}
-				/>
+				
 				<label htmlFor="startStation">From: </label>
 				<input
 					id="startStation"

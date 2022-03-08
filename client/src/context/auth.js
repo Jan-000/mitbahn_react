@@ -16,12 +16,13 @@ function AuthProviderWrapper(props) {
 		localStorage.setItem('authToken', token)
 	}
 
-	const logoutUser = () => {
+	const logoutUser = (res) => {
 		// remove the token from local storage
 		localStorage.removeItem('authToken')
 		// update the state
 		setIsLoggedIn(false)
 		setUser(null)
+		res.render('/login');
 	}
 
 	const verifyStoredToken = () => {
@@ -52,7 +53,7 @@ function AuthProviderWrapper(props) {
 		// check if we have an auth token stored
 		verifyStoredToken()
 	}, [])
-
+console.log(user)
 	return (
 		// Change: this now also contains the verifyStoredToken function
 		<AuthContext.Provider value={{ isLoggedIn, user, isLoading, storeToken, verifyStoredToken, logoutUser }}>
