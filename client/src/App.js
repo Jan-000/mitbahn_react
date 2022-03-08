@@ -16,7 +16,6 @@ import SearchGroup from './components/SearchGroup';
 
 
 import UserProfileEdit from './components/UserProfileEdit'
-import UserProfileDeleted from './components/UserProfileDeleted';
 import LoggedUserInfo from './components/LoggedUserInfo';
 
 function App() {
@@ -43,7 +42,6 @@ function App() {
         <Route path='/searchgroup' element={<SearchGroup />} />
         <Route path='/userprofile' element={<UserProfile />} />
         <Route path='/userprofileedit/:id' element={<UserProfileEdit />} />
-        <Route path='/userprofiledeleted/:id' element={<UserProfileDeleted />} />
 
       </Routes>
     </div>

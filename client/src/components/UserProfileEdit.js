@@ -7,12 +7,10 @@ export default function UserProfileEdit() {
 
     const storedToken = localStorage.getItem('authToken')
     const { user, setUser } = useContext(AuthContext)
-    // const deleteUser = userId => {
     const { logoutUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const { id } = useParams()
-
     const [name, setName] = useState(user.name);
     const [email, setEmail] = useState(user.email);
     const [password, setPassword] = useState(user.password);
@@ -45,8 +43,8 @@ export default function UserProfileEdit() {
     const handlePassword = e => setPassword(e.target.value)
     const [errorMessage, setErrorMessage] = useState(undefined);
 
-	const deleteProject = () => {
-		axios.delete('/api/userprofileedit/:id')
+	const deleteUser = () => {
+		axios.delete(`/api/auth/userprofileedit/${user._id}`)
 			.then(() => {
 				// redirect to the main page
 				navigate('/')
@@ -81,13 +79,8 @@ export default function UserProfileEdit() {
                 <button type='submit'>Update Profile</button>
                 {errorMessage && <h5>{errorMessage}</h5>}
             </form>
-            <form>
-                <div id='delete-button'>
-                    <button id='profile.delete'>Delete Profile</button>
-                </div>
-
-            </form>
-            {/* <button onClick={() => deleteUser(user._id)} className="btn-delete"> */}
+        
+            <button onClick={deleteUser} className="btn-delete">Delete Profile</button>
 
             {/* Delete 
             </button> */}

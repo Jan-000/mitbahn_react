@@ -134,15 +134,12 @@ router.get('/user/:id', (req, res, next) => {
 })
 
 // DELETE
-router.delete('/:id', (req, res, next) => {
+router.delete('/userprofileedit/:id', (req, res, next) => {
 	console.log('tried to delete User')
 	//later feature delete groups owned by this user as well
 	User.findByIdAndDelete(req.params.id)
 	.then(response=>{
-	  //destroy session and delete database entry
-	  response.body.destroy()
-	  response.authToken.destroy()
-	  res.redirect('/auth/signup')
+		res.status(200).json()
 	})
   });
 
