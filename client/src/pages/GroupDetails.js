@@ -1,23 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
+import { AuthContext } from '../context/auth';
+
+
 
 
 export default function GroupDetails() {
 
 	const { id } = useParams()
-
 	const [group, setGroup] = useState(null);
 	const storedToken = localStorage.getItem('authToken')
+	const {user} = useContext(AuthContext)
 		
 	const joinGroup = () => {
 		console.log(storedToken)
-		axios.put(`/api/groups/joingroup/${id}`, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
+		axios.put(`/api/groups/joingroup/${id}`, { user }, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
-				console.log(response)
+				console.log("this is response", response)
 				setGroup(response.data)
 			})
 			.catch(err => console.log(err))
+
 	}
 	
 
