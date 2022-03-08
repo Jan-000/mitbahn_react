@@ -1,16 +1,18 @@
-import React from 'react'
-
 import GoToSearch from "../components/GoToSearch"
-import LoggedUserInfo from '../components/LoggedUserInfo'
+
+import React, { useContext } from 'react'
+import { AuthContext } from "../context/auth"
 
 
 export default function Home() {
+	const {user} = useContext(AuthContext);
 	return (<>
-		<h1>This is the Home Page
-		</h1>
+		<p>You are logged as : 
+        
+		</p>
 		<GoToSearch />
-User email will be shown here (in progress)
-{/* <LoggedUserInfo /> */}
+		{/* {user.email} */}
+		
 		</>
 	)
 }

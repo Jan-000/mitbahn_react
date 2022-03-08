@@ -1,4 +1,6 @@
 const Group = require("../models/Group");
+//import {useContext} from 'react';
+
 
 
 const router = require("express").Router();
@@ -74,6 +76,30 @@ router.get('/user/:id', (req, res, next) => {
         res.status(200).json(user)
       }
     })
+});
+
+//
+router.put("/joingroup/:id", (req, res, next) => {
+  console.log("joingroup route was initiated");
+  console.log("here is req.params.id", req.params.id);
+  console.log("here is req.params", req.params);
+  
+
+const user = req.body.user
+console.log("here is user ", req.body.user);  
+
+const id = req.params.id;
+console.log(id)
+console.log(user._id)
+  Group.findByIdAndUpdate(id, { $push: { guests: user._id }, $inc: {numOfGuests: +1}},
+      { new: true })
+      .then(group => {
+     // console.log("this is group", group);
+      console.log("dit is reqsession id", user, group);
+    //group.numOfGuests++
+   //res.render('groups/userjoinstrip')       
+   console.log("it really worked")
+});
 });
 
 
