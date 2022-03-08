@@ -10,50 +10,21 @@ export default function SearchGroup(props) {
 	const [allGroups, setAllGroups] = useState(null);
 
 	const storedToken = localStorage.getItem('authToken')
-	// const handleSubmit = e => {
-	// 	e.preventDefault()
-	// 	// send the data from the state as a post request to 
-	// 	// the backend
-	// 	axios.post('/api/groups', { startStation, endStation, date }, { headers: { Authorization: `Bearer ${storedToken}` } })
-	// 		.then(response => {
-	// 			console.log(response)
-	// 			console.log('test');
-	// 		})
-	// 		.catch(err => console.log(err))
-	// 	// reset the form
-
-	// 	setStartStation('')
-	// 	setEndStation('')
-	// 	setDate('')
-	// 	// refresh the list of the projects in ProjectList
-	// 	props.refreshGroups()
-	// }
+	
 
 	useEffect(()=>{
 
-		axios.get('/api/groups/groups')
+		axios.get('/api/groups/groups', { headers: { Authorization: `Bearer ${storedToken}` } })
 		.then ((groups)=>{
 			console.log("this is groups", groups)
 			setAllGroups(groups)
 
 		})
+		
 	},[])
 	console.log("this is allGroups: ", allGroups)
 
 	let dynamicSearch
-
-
-	// if (allGroups){
-	// 	dynamicSearch = allGroups.data.filter((group)=>{
-	// 	if  (group.endStation.includes(endStation))
-	// 	return group
-	// })};
-	
-	// if (allGroups){
-	// 	dynamicSearch = allGroups.data.filter((group)=>{
-	// 	if  (group.startStation.includes(startStation))
-	// 	return group
-	// })};
 
 
 	if (allGroups){
