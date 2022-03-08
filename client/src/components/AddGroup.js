@@ -16,7 +16,7 @@ export default function AddGroup(props) {
 		// send the data from the state as a post request to 
 		// the backend
 		const owner=user._id
-		axios.post('/api/groups', { title, startStation, endStation, date, owner }, { headers: { Authorization: `Bearer ${storedToken}` } })
+		axios.post('/api/groups', { startStation, endStation, date, owner }, { headers: { Authorization: `Bearer ${storedToken}` } })
 
 			.then(response => {
 				console.log(response)
