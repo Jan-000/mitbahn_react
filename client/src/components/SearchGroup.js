@@ -63,7 +63,7 @@ if (allGroups === null){
 			<label htmlFor="date">Date: </label>
 				<input
 					id="date"
-					type="number"
+					type="date"
 					value = {date}
 					onChange = {e => setDate(e.target.value)
 					}
