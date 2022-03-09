@@ -9,8 +9,9 @@ import { AuthContext } from '../context/auth';
 export default function GroupDetails() {
 
 	const { id } = useParams();
-
+	let joinButtonValidation = true
 	const [group, setGroup] = useState(null);
+	const [editButtonValidation, setEditButtonValidation] = useState(false)
 	const storedToken = localStorage.getItem('authToken')
 	const {user} = useContext(AuthContext)
 	const joinGroup = () => {
@@ -19,6 +20,7 @@ export default function GroupDetails() {
 			.then(response => {
 
 				setGroup(response.data)
+				//navigate to page to be added here
 			})
 			.catch(err => console.log(err))
 
@@ -35,10 +37,24 @@ export default function GroupDetails() {
 			.catch(err => console.log(err))
 	}, [])
 
-	if (group){console.log("this is group1", group.guests)}
+console.log("this is group.guests", group?.guests)
+// if(1==1){
+
+// 	return joinButtonValidation = true}
+
+// 	group.guests.map(
+// 		guest => {
+// 			for (let i=0; i<group.guests.map.length; i++){
+// 				if (1==1){
+// 							return guest}}})
+
+			
+		
+
+
 	return (
 		<>
-			{group === null ? <div>Loading ...</div> :
+			{ group === null ? <div>Loading ...</div> :
 				<>
 					<h1>GroupDetails</h1>
 					<p>start station: {group.startStation}</p>
@@ -50,23 +66,19 @@ export default function GroupDetails() {
 							<p>{guest.email}</p>
 						)
 					 })}
-					<p>here is page GroupDetails.js</p>
-					<Link to={`/groups/edit/${group._id}`}>
-						<button>Edit this group</button>
-					</Link>
+					<p>here is page GroupDetails.js and {user._id}, {group.owner}</p>
 				</>
 			}
-			{group && group.numOfGuests < 5 && !group.guests.includes(user._id) && !group.owner.includes(user._id) ? (
-				<>
-				<button onClick={joinGroup}>Join this group</button>
-				</>
-				) : 
-				(<>
-				</>)
-				}
+			{<>
+					{ group?.owner === user._id  &&  <Link to={`/groups/edit/${group._id}`}>
+                        <button>Edit this group</button>
+                    	</Link>}
+			
+
+					{joinButtonValidation && <button onClick={joinGroup}>Join this group</button>}
 
 
-
-			</>
+			</>}
+		</>
 	)
 }
