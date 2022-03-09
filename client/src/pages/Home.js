@@ -7,18 +7,9 @@ import { AuthContext } from "../context/auth"
 
 export default function Home() {
 
-	const {user}  = useContext(AuthContext)
-
-
 
 	return (
-	<> {user ?  <p>You are logged as:  {user.email}
-		</p> : <p>You are not logged in</p>
-		}
-		</>
+	<p>This is Sparta</p>
+	)
 
-
-
-	//	<GoToSearch />
-)
 }

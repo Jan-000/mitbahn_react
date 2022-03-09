@@ -10,7 +10,7 @@ import { AuthContext } from '../context/auth';
 export default function GroupList() {
 
 	const [groups, setGroups] = useState([])
-	const {user } = useContext(AuthContext)
+	const { user } = useContext(AuthContext)
 	const storedToken = localStorage.getItem('authToken')
 
 	// get all the groups from the backend / server
@@ -23,9 +23,6 @@ export default function GroupList() {
 				// set the state of groups
 				setGroups(response.data)
 
-				
-
-
 			})
 			.catch(err => {
 				console.log(err)
@@ -36,8 +33,6 @@ export default function GroupList() {
 	else return false
 	})
     
-
-
 	let joinedGroups=groups.filter((group)=> {
 		for (let i=0; i<group.guests.length; i++){
 			if (group.guests[i] ===user._id) return true
@@ -53,11 +48,10 @@ export default function GroupList() {
 		<>
 			<h3>Groups you created</h3>
 			{ownedGroups.map(group => <GroupCard key={group._id} {...group} />)}
-		     
-			
+		    <p>indic2</p> 
 			<h3>Groups you joined</h3>
 			{joinedGroups.map(group => <GroupCard key={group._id} {...group} />)}
-			
+			<p>indic</p>
 			<AddGroup refreshGroups={getAllGroups} />
 			
 			
