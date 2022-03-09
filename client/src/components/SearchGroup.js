@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function SearchGroup(props) {
 
@@ -25,7 +26,6 @@ export default function SearchGroup(props) {
 	console.log("this is allGroups: ", allGroups)
 
 	let dynamicSearch
-
 
 	if (allGroups){
 		dynamicSearch = allGroups.data.filter((group)=>{
@@ -63,17 +63,20 @@ if (allGroups === null){
 			<label htmlFor="date">Date: </label>
 				<input
 					id="date"
-					type="number"
-					value={date}
-					onChange={e => setDate(e.target.value)
+					type="date"
+					value = {date}
+					onChange = {e => setDate(e.target.value)
 					}
 				/>
 				
 				{dynamicSearch.map((group)=>{
+					let _id = group._id
 					return <>
+					<Link to={`/groups/${_id}`} style={{textDecoration: "none"}}>
 					<h1>From: {group.startStation}</h1> 
 					<h2>To: {group.endStation}</h2> 
 					<h2>Date: {group.date}</h2>
+					</Link>
 					</>
 				})}
 		</>

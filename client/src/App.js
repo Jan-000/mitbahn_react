@@ -44,6 +44,7 @@ function App() {
         <Route path='/userprofileedit/:id' element={<UserProfileEdit />} />
 
       </Routes>
+        <LoggedUserInfo />
     </div>
   );
 }
