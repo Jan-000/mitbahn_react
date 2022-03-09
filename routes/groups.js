@@ -31,6 +31,7 @@ router.post('/', (req, res, next) => {
 // get a specific group
 router.get('/:id', (req, res, next) => {
   Group.findById(req.params.id)
+    .populate("guests")
     .then(group => {
       // check for a valid mongoobject id
       // mongoose.Types.ObjectId.isValid(<id>) 

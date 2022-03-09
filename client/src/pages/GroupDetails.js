@@ -8,11 +8,11 @@ import { AuthContext } from '../context/auth';
 
 export default function GroupDetails() {
 
-	const { id } = useParams()
+	const { id } = useParams();
+
 	const [group, setGroup] = useState(null);
 	const storedToken = localStorage.getItem('authToken')
 	const {user} = useContext(AuthContext)
-		
 	const joinGroup = () => {
 		console.log(storedToken)
 		axios.put(`/api/groups/joingroup/${id}`, { user }, { headers: { Authorization: `Bearer ${storedToken}` } })
@@ -44,6 +44,12 @@ export default function GroupDetails() {
 					<p>start station: {group.startStation}</p>
 					<p>end station : {group.endStation}</p>
 					<p>date : {group.date}</p>
+					<p>You're travelling with :</p>
+					{group.guests.map(guest=>{ 
+						return(
+							<p>{guest.email}</p>
+						)
+					 })}
 					<p>here is page GroupDetails.js</p>
 					<Link to={`/groups/edit/${group._id}`}>
 						<button>Edit this group</button>

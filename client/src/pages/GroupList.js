@@ -28,14 +28,14 @@ export default function GroupList() {
 				console.log(err)
 			})
 	}
-    let ownedGroups= groups.filter((group)=>{
-	if(group.owner ===user._id) return true
+    let ownedGroups = groups.filter((group)=>{
+	if(group.owner === user._id) return true
 	else return false
 	})
     
 	let joinedGroups=groups.filter((group)=> {
-		for (let i=0; i<group.guests.length; i++){
-			if (group.guests[i] ===user._id) return true
+		for (let i=0; i< group.guests.length; i++){
+			if (group.guests[i]._id === user._id) return true
 		}
 		return false
 	})
@@ -48,10 +48,10 @@ export default function GroupList() {
 		<>
 			<h3>Groups you created</h3>
 			{ownedGroups.map(group => <GroupCard key={group._id} {...group} />)}
-		    <p>indic2</p> 
+
 			<h3>Groups you joined</h3>
 			{joinedGroups.map(group => <GroupCard key={group._id} {...group} />)}
-			<p>indic</p>
+
 			<AddGroup refreshGroups={getAllGroups} />
 			
 			
