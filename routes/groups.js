@@ -1,5 +1,5 @@
 const Group = require("../models/Group");
-
+const Chat = require("../models/Chat");
 
 
 
@@ -18,10 +18,8 @@ router.get('/groups', (req, res, next) => {
 
 // create a group
 router.post('/', (req, res, next) => {
-  console.log("payload is", req.payload)
   const { startStation, endStation, date, owner } = req.body
-  Group.create({ startStation, endStation, date, owner })
-
+  Group.create({ startStation, endStation, date, owner})
     .then(group => {
       res.status(201).json(group)
     })
@@ -103,7 +101,52 @@ console.log(user._id)
 });
 });
 
+router.post('/initialiseMessage', (req, res, next) => {
+ 
+  const message="Welcome to the message board of this group!"
+  const author="System"
+  const messages={message, author}
+  const groupID=req.body.id
+  Chat.create({messages, groupID})
+    .then(message=>{
+      console.log('created chat test')
+    })
+    .catch(err => next(err))
+  //update chat flag in group 
+  const chat=true
+  Group.findByIdAndUpdate(req.body.id, { chat }, { new: true })
+    .then(updatedGroup =>{
+      console.log('updated chat flag in group')
+    })
+    .catch(err => next(err))
+    
 
+})
+
+
+router.post('/addMessage', (req, res, next) => {
+  console.log('addmessage starting')
+  
+  const filter= {groupID: req.body.id}
+  const objPush= {message: req.body.message, author: req.body.author}
+  const update = { $push: { messages: objPush }}
+  
+  Chat.findOneAndUpdate(filter, update)
+    .then(updatedMessage => {
+      console.log('updated the chat') 
+    })
+    .catch(err => next(err))
+})
+
+router.get('/getMessages/:id', (req, res, next) => {
+  console.log('in getmessage routeand id is', req.params.id)
+
+  Chat.findOne({'groupID': req.params.id})
+    .then(messages => {
+        console.log('found messages', messages)
+      res.status(200).json(messages)
+    })
+});
 
 
 module.exports = router;

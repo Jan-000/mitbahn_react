@@ -9,9 +9,9 @@ const chatSchema = new Schema(
             message: String,
             author: String,
         }], 
-        group: {
+        groupID: {
             type: Schema.Types.ObjectId,
-		    ref: 'Group',
+		    ref: Group,
         },
     }
 )

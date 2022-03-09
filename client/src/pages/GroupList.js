@@ -19,7 +19,7 @@ export default function GroupList() {
 		// for every request to a project route we need to also send the token
 		axios.get('/api/groups/groups', { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
-				//console.log(response.data)
+				console.log(response.data)
 				// set the state of groups
 				setGroups(response.data)
 
