@@ -11,7 +11,6 @@ export default function GroupDetails() {
 	const { id } = useParams();
 	let joinButtonValidation = true
 	const [group, setGroup] = useState(null);
-	const [editButtonValidation, setEditButtonValidation] = useState(false)
 	const storedToken = localStorage.getItem('authToken')
 	const {user} = useContext(AuthContext)
 	const joinGroup = () => {
@@ -38,19 +37,19 @@ export default function GroupDetails() {
 	}, [])
 
 console.log("this is group.guests", group?.guests)
-// if(1==1){
 
-// 	return joinButtonValidation = true}
 
-// 	group.guests.map(
-// 		guest => {
-// 			for (let i=0; i<group.guests.map.length; i++){
-// 				if (1==1){
-// 							return guest}}})
+	if (group){
+
+		for (let i=0; i<group.guests.length; i++){
+	
+		if (group.guests[i]._id == user._id){
+				joinButtonValidation = false}
+			}}
+
+	if (group?.owner === user._id){joinButtonValidation = false}
 
 			
-		
-
 
 	return (
 		<>
