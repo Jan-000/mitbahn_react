@@ -8,8 +8,9 @@ const router = require("express").Router();
 // get all the groups
 router.get('/groups', (req, res, next) => {
   Group.find()
+
+    .populate("guests")
     .then(groups => {
-      console.log("this us groups", groups)
       res.status(200).json(groups)
     })
     .catch(err => next(err))

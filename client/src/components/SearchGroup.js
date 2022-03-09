@@ -64,8 +64,8 @@ if (allGroups === null){
 				<input
 					id="date"
 					type="number"
-					value={date}
-					onChange={e => setDate(e.target.value)
+					value = {date}
+					onChange = {e => setDate(e.target.value)
 					}
 				/>
 				
