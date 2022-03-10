@@ -67,6 +67,14 @@ export default function HomeView() {
 
                 <hr></hr>
             </article>
+            <article>
+                <h2>So take a seat and let's have a ride.</h2>
+                <figure>
+               
+                    <img width="50%" alt="yea" src="train.gif"></img>
+                    <figcaption>Yeehaw</figcaption>
+                </figure>
+            </article>
         </article>
     </div>
   )
