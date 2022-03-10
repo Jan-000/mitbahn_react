@@ -7,6 +7,7 @@ import ChatCard from '../components/ChatCard';
 
 
 
+
 export default function GroupDetails() {
 
 	const { id } = useParams();
@@ -28,8 +29,9 @@ export default function GroupDetails() {
 			.then(response => {
 
 				setGroup(response.data)
-      // navigate
+
 			})
+			
 			.catch(err => console.log(err))
 
 	}
