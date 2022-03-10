@@ -7,6 +7,9 @@ export default function Navbar() {
 
 	return (
 		<nav className="nav">
+			<div className="nav-left">
+		<img id="brand-logo" src="/mitBahnmarkenz.png" alt="brand logo"/>
+			</div>
 			<Link to="/">
 				<button className="btn">Home</button>
 			</Link>
