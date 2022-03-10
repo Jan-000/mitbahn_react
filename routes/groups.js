@@ -26,6 +26,8 @@ router.post('/', (req, res, next) => {
     .catch(err => next(err))
 })
 
+
+
 // get a specific group
 router.get('/:id', (req, res, next) => {
   Group.findById(req.params.id)
@@ -81,23 +83,24 @@ router.get('/user/:id', (req, res, next) => {
 
 //
 router.put("/joingroup/:id", (req, res, next) => {
-  console.log("joingroup route was initiated");
-  console.log("here is req.params.id", req.params.id);
-
 const user = req.body.user
-
 const id = req.params.id;
-console.log(id)
-console.log(user._id)
   Group.findByIdAndUpdate(id, { $push: { guests: user._id }, $inc: {numOfGuests: +1}},
       { new: true })
       .then(group => {
-     // console.log("this is group", group);
-      console.log("dit is reqsession id", user, group);
-    //group.numOfGuests++
-     
-   console.log("it really worked")
-   console.log("this is group backend", group.guests)
+        res.status(200).json(group)
+});
+});
+
+router.put("/leavegroup/:id", (req, res, next) => {
+  
+const user = req.body.user
+const id = req.params.id;
+
+  Group.findByIdAndUpdate(id, { $pull: { guests: user._id }, $inc: {numOfGuests: -1}},
+      { new: true })
+      .then(group => {
+        res.status(200).json(group)
 });
 });
 
@@ -117,6 +120,7 @@ router.post('/initialiseMessage', (req, res, next) => {
   Group.findByIdAndUpdate(req.body.id, { chat }, { new: true })
     .then(updatedGroup =>{
       console.log('updated chat flag in group')
+      res.status(200).json()
     })
     .catch(err => next(err))
     
@@ -132,19 +136,15 @@ router.post('/addMessage', (req, res, next) => {
   const update = { $push: { messages: objPush }}
   
   Chat.findOneAndUpdate(filter, update, {new:true})
-    .then(updatedMessage => {
-      console.log('updated the chat') 
+    .then(updatedMessage => { 
       res.status(200).json(updatedMessage)
     })
     .catch(err => next(err))
 })
 
 router.get('/getMessages/:id', (req, res, next) => {
-  console.log('in getmessage routeand id is', req.params.id)
-
   Chat.findOne({'groupID': req.params.id})
     .then(messages => {
-        console.log('found messages', messages)
       res.status(200).json(messages)
     })
 });
