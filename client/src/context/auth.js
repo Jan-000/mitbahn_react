@@ -22,7 +22,7 @@ function AuthProviderWrapper(props) {
 		// update the state
 		setIsLoggedIn(false)
 		setUser(null)
-		res.render('/login');
+		//res.render('/login');
 	}
 
 	const verifyStoredToken = () => {
@@ -53,7 +53,7 @@ function AuthProviderWrapper(props) {
 		// check if we have an auth token stored
 		verifyStoredToken()
 	}, [])
-console.log(user)
+
 	return (
 		// Change: this now also contains the verifyStoredToken function
 		<AuthContext.Provider value={{ isLoggedIn, user, isLoading, storeToken, verifyStoredToken, logoutUser }}>

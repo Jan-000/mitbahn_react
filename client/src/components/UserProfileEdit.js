@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../context/auth'
 
 export default function UserProfileEdit() {

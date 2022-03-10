@@ -1,16 +1,24 @@
+import GoToSearch from "../components/GoToSearch"
+
 import React, { useContext } from 'react'
 import { AuthContext } from "../context/auth"
 
 
-export default function LoggedUserInfo() {
 
-    const {user} = useContext(AuthContext);
+export default function Home() {
 
-	return (<>
+	const {user}  = useContext(AuthContext)
 
-	    You are logged as : 
-        {user.email}
 
+
+	return (
+	<> {user ?  <p>You are logged as:  {user.email}
+		</p> : <p>You are not logged in</p>
+		}
 		</>
-	)
+
+
+
+	//	<GoToSearch />
+)
 }

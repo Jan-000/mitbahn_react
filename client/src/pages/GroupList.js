@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios';
 import GroupCard from '../components/GroupCard';
 import AddGroup from '../components/AddGroup';
 import GoToSearch from '../components/GoToSearch'
+import { AuthContext } from '../context/auth';
 
 
 
 export default function GroupList() {
 
 	const [groups, setGroups] = useState([])
-	console.log(groups)
-
+	const { user } = useContext(AuthContext)
 	const storedToken = localStorage.getItem('authToken')
 
 	// get all the groups from the backend / server
@@ -22,11 +22,23 @@ export default function GroupList() {
 				console.log(response.data)
 				// set the state of groups
 				setGroups(response.data)
+
 			})
 			.catch(err => {
 				console.log(err)
 			})
 	}
+    let ownedGroups = groups.filter((group)=>{
+	if(group.owner === user._id) return true
+	else return false
+	})
+    
+	let joinedGroups=groups.filter((group)=> {
+		for (let i=0; i< group.guests.length; i++){
+			if (group.guests[i]._id === user._id) return true
+		}
+		return false
+	})
 
 	useEffect(() => {
 		getAllGroups()
@@ -34,10 +46,15 @@ export default function GroupList() {
 
 	return (
 		<>
-			<h1>Available rides</h1>
-			<p>dit is page GroupList.js</p>
-			{groups.map(group => <GroupCard key={group._id} {...group} />)}
+			<h3>Groups you created</h3>
+			{ownedGroups.map(group => <GroupCard key={group._id} {...group} />)}
+
+			<h3>Groups you joined</h3>
+			{joinedGroups.map(group => <GroupCard key={group._id} {...group} />)}
+
 			<AddGroup refreshGroups={getAllGroups} />
+			
+			
 			<GoToSearch />
 		</>
 	)
