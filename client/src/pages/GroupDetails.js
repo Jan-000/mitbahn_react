@@ -127,8 +127,8 @@ console.log("this is group.guests", group?.guests)
 					<p>start station: {group.startStation}</p>
 					<p>end station : {group.endStation}</p>
 					<p>date : {group.date}</p>
-					<p>You're travelling with :</p>
 					<p>current price is: {group.prices[group.numOfGuests]}</p>
+					<p>You're travelling with :</p>
 					{group.guests.map(guest=>{ 
 						return(
 							<p>{guest.name}</p>
