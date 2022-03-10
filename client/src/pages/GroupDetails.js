@@ -11,6 +11,7 @@ export default function GroupDetails() {
 
 	const { id } = useParams();
 	let joinButtonValidation = true
+	let editButtonValidation = false
 	const [group, setGroup] = useState(null);
 	const [message, setMessage] = useState('');
 	const [chat, setChat] = useState (null)
@@ -83,17 +84,21 @@ export default function GroupDetails() {
 
 console.log("this is group.guests", group?.guests)
 
-
+//conditions for join edit buttons display
 	if (group){
 
 		for (let i=0; i<group.guests.length; i++){
 	
-		if (group.guests[i]._id == user._id){
+		if (group.guests[i]._id === user._id ){
 				joinButtonValidation = false}
 			}}
 
-	if (group?.owner === user._id){joinButtonValidation = false}
+	if (group?.owner === user._id){ joinButtonValidation = false }
+	if (group?.guests.length >= 5){ joinButtonValidation = false }
 
+	if (group){
+		if (group.owner === user._id){ editButtonValidation = true}
+	}
 			
 
 	return (
@@ -115,6 +120,12 @@ console.log("this is group.guests", group?.guests)
 				</>
 			}
 
+			{<>
+					{ editButtonValidation  &&  <Link to={`/groups/edit/${group._id}`}>
+                        <button>Edit this group</button>
+                    	</Link>}
+
+
 			{group && group.numOfGuests < 5 && !group.guests.includes(user._id) && !group.owner.includes(user._id) ? (
 				<>
 				<button onClick={joinGroup}>Join this group</button>
@@ -131,6 +142,7 @@ console.log("this is group.guests", group?.guests)
 					{chat.messages.map(chatMessage => <ChatCard key={chatMessage._id} {...chatMessage} />) }
  			</>
 			}
+
 			
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="message">Your message</label>
