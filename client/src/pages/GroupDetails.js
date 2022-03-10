@@ -7,6 +7,7 @@ import ChatCard from '../components/ChatCard';
 
 
 
+
 export default function GroupDetails() {
 
 	const { id } = useParams();
@@ -22,21 +23,52 @@ export default function GroupDetails() {
 
 	const author= user.name
 	
+	if (group){
+
+		for (let i=0; i<group.guests.length; i++){
+	
+		if (group.guests[i]._id === user._id ){
+				joinButtonValidation = false}
+			}}
+
+	if (group?.owner === user._id){ joinButtonValidation = false }
+	if (group?.guests.length >= 5){ joinButtonValidation = false }
+
+//conditions for edit button display
+
+	if (group?.owner === user._id){ editButtonValidation = true}
+	
+	
+	
+	
+	
 	const joinGroup = () => {
 		console.log(storedToken)
 		axios.put(`/api/groups/joingroup/${id}`, { user }, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
-
 				setGroup(response.data)
-      // navigate
+
+				joinButtonValidation=false
+				navigate(`/groups`)
 			})
 			.catch(err => console.log(err))
-
+			
 	}
+   
+	const leaveGroup = () =>{
+		console.log ('clicked leave')
+		axios.put(`/api/groups/leavegroup/${id}`, { user }, { headers: { Authorization: `Bearer ${storedToken}` } })
+			.then(response => {
+				setGroup(response.data)
+				joinButtonValidation = true
+				navigate("/groups")
+			})
+			
+			.catch(err => console.log(err))
+	}
+
 	const handleSubmit = e => {
 		e.preventDefault()
-		console.log("submit button received")
-		console.log("group chat flag", group.chat)
 		if (group.chat===false){
 			axios.post('/api/groups/initialiseMessage', {  id}, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
@@ -49,7 +81,6 @@ export default function GroupDetails() {
 		axios.post('/api/groups/addMessage', { message,  author, id}, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
 				setMessage('')
-				console.log('one before navigate', response)
 				setChat(response.data)	
 			})
 			.catch(err => console.log(err))
@@ -85,20 +116,7 @@ export default function GroupDetails() {
 console.log("this is group.guests", group?.guests)
 
 //conditions for join button display
-	if (group){
-
-		for (let i=0; i<group.guests.length; i++){
 	
-		if (group.guests[i]._id === user._id ){
-				joinButtonValidation = false}
-			}}
-
-	if (group?.owner === user._id){ joinButtonValidation = false }
-	if (group?.guests.length >= 5){ joinButtonValidation = false }
-
-//conditions for edit button display
-
-	if (group?.owner === user._id){ editButtonValidation = true}
 
 	return (
 		<>
@@ -126,7 +144,7 @@ console.log("this is group.guests", group?.guests)
 
 					{ joinButtonValidation  && <button onClick={joinGroup}>Join this group</button>
 					}
-
+					{!joinButtonValidation && <button onClick={leaveGroup}>Leave this group</button>}
 
 			
 			<h3>Message Board</h3>
@@ -146,7 +164,7 @@ console.log("this is group.guests", group?.guests)
 				placeholder="use this field for additional information: meeting point, schedule, questions">
   				</textarea>
 				<br></br>
-				<button type="submit">Submit</button>
+				<button id='message-btn' type="submit">Submit</button>
 			</form>
 
 

@@ -9,7 +9,9 @@ export default function Home() {
 
 
 	return (
-	<p></p>
+
+	<p>This is Sparta and also a redeployment!</p>
+
 	)
 
 }
