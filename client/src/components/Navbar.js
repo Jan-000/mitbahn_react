@@ -8,7 +8,8 @@ export default function Navbar() {
 	return (
 		<nav className="nav">
 			<div className="nav-left">
-		<img id="brand-logo" src="/mitBahnmarkenz.png" alt="brand logo"/>
+		<img id="brand-logo" src="/mitBahn-logo.png" alt="brand logo"/>
+		<img id="brand-text" src="/mitBahnTexttrans.png" alt="brand-text" />
 			</div>
 			<Link to="/">
 				<button className="btn">Home</button>
@@ -19,7 +20,7 @@ export default function Navbar() {
 					<Link to="/groups">
 						<button>Rides</button>
 					</Link>
-					<button onClick={logoutUser}>Logout</button>
+					<button onClick={logoutUser} to='/'>Logout</button>
 					<Link to="/userProfile">
 						<button>Profile</button>
 					</Link>

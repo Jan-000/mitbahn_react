@@ -2,7 +2,6 @@
 -Navbar should be centered
 -serchforride button centered
 - pictures of capacity
-- adding 
 - sign up kick out main page
 */
 
@@ -10,7 +9,6 @@
 
 /* ENTIRE WEBPAPP */
 .App {
-  
   margin: 0% 10%;
   padding: 15vh 50px 100vh 50px;
   background-color: rgba(228, 228, 228, 0.74);
@@ -19,8 +17,10 @@
   font-style: conde;
   z-index: -1;
   font-family: 'Roboto', sans-serif;  
-  font-weight: 200;
+color: rgb(59, 59, 59);
+  font-weight: 500;
 }
+
 html {
   /* The image used */
   background-image: url("https://images.pexels.com/photos/298018/pexels-photo-298018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
@@ -63,9 +63,13 @@ button:hover{
 }
 
 #ride-instead-btn {
-  align-self: baseline;
+  /* position: relative; */
+  /* align-self: auto; */
   display: flex;
   justify-content: center;
+  font-size: x-large;
+  font-weight: bolder;
+  box-shadow: #00DDEB 0 0 40px;
 }
 
 button
@@ -103,6 +107,9 @@ box-shadow: 1px 2px 3px rgba(0,0,0,.5);
 
 a {
   text-decoration: none;
+  color: #ffff;
+  font-weight: 900;
+  /* border-bottom:3px solid #ffffff ; */
 }
 
 /* NAVBAR */
@@ -113,6 +120,7 @@ a {
   width: 100vw!important;
   /* align-items: center; */
   background-color:rgba(197, 0, 0, 0.897);
+  background-image: linear-gradient(1deg,#ee8383b2, rgba(197, 0, 0, 0.897) 50%,#940101);
   transition: background-color 1s linear;
   -webkit-transition: background-color 0.2s linear;
   display: flex;
@@ -121,13 +129,31 @@ a {
 }
 
 .nav .nav-left {
-position: absolute ;
-left:10px
+
 }
 
 #brand-logo {
-  height: 50px;
+height: 2.5em;
+display: flex;
+justify-content: center;
+align-items: center;
+align-content: center;
+border-radius: 5px;
+position: absolute ;
+left:4%;
+border: solid white 3px;
 }
+#brand-text {
+  height: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border-radius: 5px;
+  position: absolute ;
+  left:10%;
+  border: solid white 2px;
+  }
 
 /* LOWER BAR */
   .go-to-search {
@@ -170,4 +196,92 @@ margin: 0 0px 0 20px;
 }
 .add-ride button {
   margin-left: 1em;
+}
+
+/* GROUP CARD */
+.groups-cards {
+  
+}
+
+.group-bar img{
+  height: 1em;
+  width: 60%;
+  padding: 3px;
+  position: relative;
+  box-shadow: 0 0 30px rgb(35, 160, 167);
+  border-radius: 10px;
+  border: 3px solid rgb(109, 134, 163);
+  -webkit-animation: glowing 1s ease-in-out infinite alternate;
+  -moz-animation: glowing 1s ease-in-out infinite alternate;
+  animation: glowing 1s ease-in-out infinite alternate;
+}
+@-webkit-keyframes glowing {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px rgb(111, 0, 255), 0 0 40px rgb(0, 183, 255), 0 0 50px #007fe6, 0 0 60px #007fe6, 0 0 70px #007fe6;
+  }
+  to {
+    box-shadow: 0 0 20px #fff, 0 0 30px #6b2cfc, 0 0 40px #3e14fc, 0 0 50px #4d59ff, 0 0 60px #5f4dff, 0 0 70px #4da9ff, 0 0 80px #4da0ff;
+  }
+}
+.group-bar img:hover {
+    color: rgb(18, 19, 43);
+    background:  linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00dbeb75);
+    box-shadow: 0 0 30px rgb(13, 65, 66);
+    transition: .75s ease-in;
+    transition: .75s ease-out;
+    border: 3px solid rgb(31, 0, 82);
+    -webkit-animation: glowing 1s ease-in-out infinite alternate;
+    -moz-animation: glowing 1s ease-in-out infinite alternate;
+    animation: glowing 1s ease-in-out infinite alternate;
+}
+
+.created-groups {
+  background-color: #007fe62d;
+  border-radius: 15px;
+  padding: 2em;
+  margin-bottom: 2em;
+  border: 10px solid  #008cff7e;
+  box-shadow:  #00ccff 0 0 10px;
+  align-items: center;
+}
+
+.created-groups h3 {
+  position: relative;
+  top:-30px;
+  font-size: 1.5em;
+  background: linear-gradient(144deg,#af40ff3d, #5a42f350 50%,#00dbeb75);
+  border-radius: 20px;
+  box-shadow: #121212 0 5px 15px;
+}
+
+.joined-groups {
+  background-color:#94110054;
+  border-radius: 15px;
+  padding: 2em;
+  border: 10px solid #ff1e0059;
+  box-shadow: #ff1e00 0 0 10px;
+}
+.joined-groups h3 {
+  position: relative;
+  top:-30px;
+  font-size: 1.5em;
+  background: linear-gradient(30deg,#ff404017, #f3429550 50%,#00ebb075);
+  border-radius: 20px;
+  box-shadow: #121212 0 5px 15px;
+}
+
+.created-groups a {
+  text-decoration: none;
+  color: #ffff;
+  font-weight: 900;
+  /* border-bottom:3px solid #ffffff ; */
+  text-shadow: #000000 0 0 5px;
+}
+
+.from,
+.to {
+  background-color: #ffffff98;
+  position: relative;
+  left: 40%;
+  width: 25%;
 }
