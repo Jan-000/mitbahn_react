@@ -28,7 +28,8 @@ export default function GroupDetails() {
 		axios.put(`/api/groups/joingroup/${id}`, { user }, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
 
-				setGroup(response.data)
+				setGroup(response.data);
+				navigate('/groups')
 
 			})
 			
