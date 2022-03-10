@@ -18,31 +18,29 @@ export default function GroupDetails() {
 	const [chat, setChat] = useState(null)
 
 	const storedToken = localStorage.getItem('authToken')
-	const { user } = useContext(AuthContext)
-	const navigate = useNavigate()
 
-	const author = user.name
+	const {user} = useContext(AuthContext)
+	const navigate =useNavigate()
 
-	if (group) {
+	const author= user.name
+	
+	
+	if (group){
 
-		for (let i = 0; i < group.guests.length; i++) {
+		for (let i=0; i<group.guests.length; i++){
+	
+		if (group.guests[i]._id === user._id ){
+				joinButtonValidation = false}
+			}}
 
-			if (group.guests[i]._id === user._id) {
-				joinButtonValidation = false
-			}
-		}
-	}
+	if (group?.owner === user._id){ joinButtonValidation = false }
+	if (group?.guests.length >= 5){ joinButtonValidation = false }
 
-	if (group?.owner === user._id) { joinButtonValidation = false }
-	if (group?.guests.length >= 5) { joinButtonValidation = false }
+//conditions for edit button display
 
-	//conditions for edit button display
-
-	if (group?.owner === user._id) { editButtonValidation = true }
-
-
-
-
+	if (group?.owner === user._id){ editButtonValidation = true}
+	
+	
 
 	const joinGroup = () => {
 		console.log(storedToken)
@@ -124,6 +122,7 @@ export default function GroupDetails() {
 		<>
 			{group === null ? <div>Loading ...</div> :
 				<>
+
 					<div className='group-details'>
 						{console.log(group)}
 						<h1>GroupDetails</h1>
@@ -139,6 +138,7 @@ export default function GroupDetails() {
 						})}
 						<p>here is page GroupDetails.js and {user._id}, {group.owner}</p>
 					</div>
+
 				</>
 			}
 
