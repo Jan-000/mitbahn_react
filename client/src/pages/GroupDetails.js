@@ -10,7 +10,7 @@ import ChatCard from '../components/ChatCard';
 export default function GroupDetails() {
 
 	const { id } = useParams();
-
+	let joinButtonValidation = true
 	const [group, setGroup] = useState(null);
 	const [message, setMessage] = useState('');
 	const [chat, setChat] = useState (null)
@@ -27,6 +27,7 @@ export default function GroupDetails() {
 			.then(response => {
 
 				setGroup(response.data)
+      // navigate
 			})
 			.catch(err => console.log(err))
 
@@ -48,9 +49,7 @@ export default function GroupDetails() {
 			.then(response => {
 				setMessage('')
 				console.log('one before navigate', response)
-				setChat(response.data)
-				//navigate(`/groups/${id}`)
-				//location.reload();
+				setChat(response.data)	
 			})
 			.catch(err => console.log(err))
 		
@@ -60,7 +59,6 @@ export default function GroupDetails() {
 
 	const handleMessage = e => {
 		setMessage(e.target.value)
-		//console.log('log of group', group)
 	}
 	
 	const getChat = () => {
@@ -69,7 +67,6 @@ export default function GroupDetails() {
 				setChat(response.data)
 		})
 		.catch(err => console.log(err))
-		//console.log('this is the chat from response', chat)
 	}
 
 
@@ -77,18 +74,31 @@ export default function GroupDetails() {
 		// request to the backend
 		axios.get(`/api/groups/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
-				//console.log(response)
 				setGroup(response.data)
 			})
 			.catch(err => console.log(err))
-		
 		getChat()
 	}, [])
 
-	//if (group){console.log("this is group1", group.guests)}
+
+console.log("this is group.guests", group?.guests)
+
+
+	if (group){
+
+		for (let i=0; i<group.guests.length; i++){
+	
+		if (group.guests[i]._id == user._id){
+				joinButtonValidation = false}
+			}}
+
+	if (group?.owner === user._id){joinButtonValidation = false}
+
+			
+
 	return (
 		<>
-			{group === null ? <div>Loading ...</div> :
+			{ group === null ? <div>Loading ...</div> :
 				<>
 					{console.log(group)}
 					<h1>GroupDetails</h1>
@@ -101,12 +111,10 @@ export default function GroupDetails() {
 							<p>{guest.name}</p>
 						)
 					 })}
-					<p>here is page GroupDetails.js</p>
-					<Link to={`/groups/edit/${group._id}`}>
-						<button>Edit this group</button>
-					</Link>
+					<p>here is page GroupDetails.js and {user._id}, {group.owner}</p>
 				</>
 			}
+
 			{group && group.numOfGuests < 5 && !group.guests.includes(user._id) && !group.owner.includes(user._id) ? (
 				<>
 				<button onClick={joinGroup}>Join this group</button>
@@ -135,6 +143,8 @@ export default function GroupDetails() {
 			</form>
 
 
-			</>
+
+			</>}
+		</>
 	)
 }
