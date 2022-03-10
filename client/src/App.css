@@ -41,6 +41,8 @@ html {
 
 h3 {
   font-weight: 1500;
+  font-size: larger;
+  text-shadow: #FFFFFF 0 0 5px;
 }
 
 input {
@@ -128,10 +130,6 @@ a {
   padding: 1.5vh;
 }
 
-.nav .nav-left {
-
-}
-
 #brand-logo {
 height: 2.5em;
 display: flex;
@@ -166,6 +164,63 @@ border: solid white 3px;
     /* position: fixed; */
     bottom: auto;
   }
+/* HOME VIEW */
+
+.home-view {
+  width: 96%;
+  margin-left: 2%;
+  margin-right: 2%;
+  /* background-image: linear-gradient(90deg,#ffffff00 0%, #b8f1ffbd 45% 65%, #ffffff00) ;
+  height: 120%;
+  padding: 20vh 0;
+  margin-top: 0; */
+}
+.home-view h2 {
+  box-shadow: #000000 2px 5px 10px, #ff1c1c -2px -4px 7px, #008cff -1px 2px 14px;
+  border-radius: 5px;
+  padding: 5px;
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+.home-view  h3 {
+  padding: 3px;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: 40%;
+  margin-right: 40%;
+  background-image: linear-gradient(90deg,#ffffff00 0%, #00318b7e 20% 80%, #ffffff00) ;
+}
+
+.home-view article article{
+  background-image: linear-gradient(80deg, #0278d84d 50%, #004c8b13) ;
+border-radius: 10px;
+padding: 1px 0 0 0;
+margin-bottom: 30px;
+}
+
+.home-view p {
+margin: 0 5%;
+}
+
+.home-view img {
+  border-radius: 10px;
+  box-shadow: #000000 2px 5px 10px;
+  margin: 5px;
+  margin-bottom: 5%;
+}
+
+.mitBahn-greet {
+  margin: 5%;
+}
+.mitBahn-greet-text {
+  margin: 15% 0;
+  /* background-image: linear-gradient(80deg, #0278d84d 50%, #004c8b13) ; */
+  border-radius: 10px;
+padding: 10px;
+border: 5px solid rgba(36, 167, 255, 0.336);
+}
 
 /* USER EDITIG PAGE */
 
@@ -211,8 +266,8 @@ margin: 0 0px 0 20px;
   box-shadow: 0 0 30px rgb(35, 160, 167);
   border-radius: 10px;
   border: 3px solid rgb(109, 134, 163);
-  
 }
+
 .group-bar img:hover {
     color: rgb(18, 19, 43);
     background:  linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00dbeb75);
