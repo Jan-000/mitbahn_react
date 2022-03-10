@@ -6,13 +6,15 @@ import { Link } from 'react-router-dom';
 export default function GroupCard({ _id, startStation, endStation, numOfGuests, prices}) {
 	console.log("group card quests")
 	return (
-		<div>
+		<div className='groups-cards'>
 			<Link to={`/groups/${_id}`} style={{textDecoration: "none"}}>
 				<div>
-					<p>From: { startStation } &nbsp;&nbsp;
-					to: { endStation }</p>
+					<p className='from'>From: { startStation } &nbsp;&nbsp;
+					</p>
+					<p className='to'>
+					To: { endStation }</p>
 				</div>
-				<div>
+				<div className='group-bar'>
 					<img alt='status' src={`/${numOfGuests}.png`}/>
 				</div>
 			</Link>
