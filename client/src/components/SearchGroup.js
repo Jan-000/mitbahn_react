@@ -81,8 +81,8 @@ export default function SearchGroup(props) {
                   <h2 className="element-date">Date: {group.date}</h2>
 				  
                   <div className="element-stations">
-                    <h2 className="from">From:<h2> {group.startStation}</h2></h2>
-                    <h2 className="to">To: </h2><h2>{group.endStation}</h2>
+                    <h2 className="from">From:<h2 className="start"> {group.startStation}</h2></h2>
+                    <h2 className="to">To:<h2 className="end">{group.endStation}</h2> </h2>
                   </div>
                 </Link>
               </div>
