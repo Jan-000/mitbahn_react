@@ -165,7 +165,7 @@ console.log("this is group.guests", group?.guests)
 				placeholder="use this field for additional information: meeting point, schedule, questions">
   				</textarea>
 				<br></br>
-				<button type="submit">Submit</button>
+				<button id='message-btn' type="submit">Submit</button>
 			</form>
 
 
