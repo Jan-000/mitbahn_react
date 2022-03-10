@@ -46,8 +46,8 @@ export default function GroupDetails() {
 		console.log(storedToken)
 		axios.put(`/api/groups/joingroup/${id}`, { user }, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
-				setGroup(response.data)
 
+				setGroup(response.data);
 				joinButtonValidation=false
 				navigate(`/groups`)
 			})
@@ -128,6 +128,7 @@ console.log("this is group.guests", group?.guests)
 					<p>end station : {group.endStation}</p>
 					<p>date : {group.date}</p>
 					<p>You're travelling with :</p>
+					<p>current price is: {group.prices[group.numOfGuests]}</p>
 					{group.guests.map(guest=>{ 
 						return(
 							<p>{guest.name}</p>
