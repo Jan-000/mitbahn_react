@@ -65,10 +65,10 @@ export default function UserProfileEdit() {
     return (
         <>
             <form className='edit-form' onSubmit={handleSubmit}>
-                <div>User Profile of {user.name}
+                <div><h3>User profile of {user.name}
                     {/* {console.log(id)}
                     {console.log(user._id)} */}
-                </div>
+                    </h3></div>
                 <label>Name:</label>
                 <input type='text' placeholder={name} name='Name' value={name} onChange={handleName} />
                 <label>Email:</label>

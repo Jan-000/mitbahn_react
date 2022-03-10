@@ -23,6 +23,7 @@ export default function GroupDetails() {
 
 	const author= user.name
 	
+	
 	if (group){
 
 		for (let i=0; i<group.guests.length; i++){
@@ -123,18 +124,19 @@ console.log("this is group.guests", group?.guests)
 			{ group === null ? <div>Loading ...</div> :
 				<>
 					{console.log(group)}
-					<h1>GroupDetails</h1>
+					<h1>Group details</h1>
 					<p>start station: {group.startStation}</p>
 					<p>end station : {group.endStation}</p>
 					<p>date : {group.date}</p>
 					<p>current price is: {group.prices[group.numOfGuests]}</p>
-					<p>You're travelling with :</p>
+					<p>Who is travelling :</p>
+					
+				{group?.ownerName&& <> - {group.ownerName} (owner)</>}
 					{group.guests.map(guest=>{ 
 						return(
-							<p>{guest.name}</p>
+							<p> - {guest.name}</p>
 						)
 					 })}
-					<p>here is page GroupDetails.js and {user._id}, {group.owner}</p>
 				</>
 			}
 

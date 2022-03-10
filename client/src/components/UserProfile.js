@@ -30,7 +30,7 @@ export default function UserProfile() {
   if (user) {
     return (
       <div>
-        User Profile of {user.name}
+        <h3>User profile of {user.name}</h3>
         {console.log(user)}
         <div>
           <h3>Name: {user.name}</h3>
