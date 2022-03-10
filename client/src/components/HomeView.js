@@ -1,8 +1,10 @@
 import React from 'react'
+import Home from '../pages/Home';
 
 export default function HomeView() {
   return (
     <div>
+        <Home />
         <article>
             <h2>Welcome to mitBahn</h2>
             The app that will help you travel cheap in Germany with the Quer-durchs-Land-Ticket. Let us present some of the benefits.
