@@ -131,9 +131,10 @@ router.post('/addMessage', (req, res, next) => {
   const objPush= {message: req.body.message, author: req.body.author}
   const update = { $push: { messages: objPush }}
   
-  Chat.findOneAndUpdate(filter, update)
+  Chat.findOneAndUpdate(filter, update, {new:true})
     .then(updatedMessage => {
       console.log('updated the chat') 
+      res.status(200).json(updatedMessage)
     })
     .catch(err => next(err))
 })

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/auth';
 import ChatCard from '../components/ChatCard';
 
@@ -17,6 +17,7 @@ export default function GroupDetails() {
 
 	const storedToken = localStorage.getItem('authToken')
 	const {user} = useContext(AuthContext)
+	const navigate =useNavigate()
 
 	const author= user.name
 	
@@ -41,18 +42,21 @@ export default function GroupDetails() {
 			})
 			.catch(err => console.log(err))
 			
-		} else {
-			console.log('did nothing because we have chat')
-		}
+		} 
 		
 		axios.post('/api/groups/addMessage', { message,  author, id}, { headers: { Authorization: `Bearer ${storedToken}` } })
-
 			.then(response => {
 				setMessage('')
+				console.log('one before navigate', response)
+				setChat(response.data)
+				//navigate(`/groups/${id}`)
+				//location.reload();
 			})
 			.catch(err => console.log(err))
-		console.log('arrived back at groupdetail.js')
-		}
+		
+			
+
+	}
 
 	const handleMessage = e => {
 		setMessage(e.target.value)
