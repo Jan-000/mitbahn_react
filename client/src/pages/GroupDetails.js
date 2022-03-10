@@ -84,7 +84,7 @@ export default function GroupDetails() {
 
 console.log("this is group.guests", group?.guests)
 
-//conditions for join edit buttons display
+//conditions for join button display
 	if (group){
 
 		for (let i=0; i<group.guests.length; i++){
@@ -96,10 +96,9 @@ console.log("this is group.guests", group?.guests)
 	if (group?.owner === user._id){ joinButtonValidation = false }
 	if (group?.guests.length >= 5){ joinButtonValidation = false }
 
-	if (group){
-		if (group.owner === user._id){ editButtonValidation = true}
-	}
-			
+//conditions for edit button display
+
+	if (group?.owner === user._id){ editButtonValidation = true}
 
 	return (
 		<>
@@ -125,15 +124,11 @@ console.log("this is group.guests", group?.guests)
                         <button>Edit this group</button>
                     	</Link>}
 
+					{ joinButtonValidation  && <button onClick={joinGroup}>Join this group</button>
+					}
 
-			{group && group.numOfGuests < 5 && !group.guests.includes(user._id) && !group.owner.includes(user._id) ? (
-				<>
-				<button onClick={joinGroup}>Join this group</button>
-				</>
-				) : 
-				(<>
-				</>)
-			}
+
+			
 			<h3>Message Board</h3>
 			
 		    
