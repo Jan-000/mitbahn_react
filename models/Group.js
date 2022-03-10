@@ -28,7 +28,10 @@ const groupSchema = new Schema({
 		type: Array,
 		default : [ "42,00 Euro", "24,50 Euro", "18,66 Euro", "15,75 Euro", "14,00 Euro"]
 	},
-  
+	chat: {
+		type: Boolean,
+		default: false,
+	}
 });
 
 const Group = mongoose.model('Group', groupSchema);
