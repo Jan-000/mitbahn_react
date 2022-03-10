@@ -7,6 +7,7 @@ import ChatCard from '../components/ChatCard';
 
 
 
+
 export default function GroupDetails() {
 
 	const { id } = useParams();
@@ -46,6 +47,7 @@ export default function GroupDetails() {
 		axios.put(`/api/groups/joingroup/${id}`, { user }, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
 				setGroup(response.data)
+
 				joinButtonValidation=false
 				navigate(`/groups`)
 			})
@@ -61,6 +63,7 @@ export default function GroupDetails() {
 				joinButtonValidation = true
 				navigate("/groups")
 			})
+			
 			.catch(err => console.log(err))
 	}
 
