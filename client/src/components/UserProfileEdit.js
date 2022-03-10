@@ -64,7 +64,7 @@ export default function UserProfileEdit() {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form className='edit-form' onSubmit={handleSubmit}>
                 <div>User Profile of {user.name}
                     {/* {console.log(id)}
                     {console.log(user._id)} */}
@@ -75,13 +75,15 @@ export default function UserProfileEdit() {
                 <input type='email' placeholder={email} email='email' value={email} onChange={handleEmail} />
                 <label>Password:</label>
                 <input type='password' placeholder={"********"} name='Password' value={password} onChange={handlePassword} />
-                <br></br>
+               <div className='spacer-editpage'></div>
+                <div className="btn-editpage">
                 <button type='submit'>Update Profile</button>
+                </div>
                 {errorMessage && <h5>{errorMessage}</h5>}
             </form>
-        
-            <button onClick={deleteUser} className="btn-delete">Delete Profile</button>
-
+        <div className="btn-editpage">
+            <button onClick={deleteUser} >Delete Profile</button>
+            </div>
             {/* Delete 
             </button> */}
         </>

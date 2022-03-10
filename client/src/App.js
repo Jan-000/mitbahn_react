@@ -15,13 +15,21 @@ import SearchGroup from './components/SearchGroup';
 // import GroupsPage from './components/GroupsPage'
 
 
-import UserProfileEdit from './components/UserProfileEdit'
+import UserProfileEdit from './components/UserProfileEdit';
 import LoggedUserInfo from './components/LoggedUserInfo';
+// import styled from "styled-components";
+
+// const Wrapper = styled.div`
+//   display: flex;
+//   flex-flow: row nowrap;
+// `
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Navbar />
+    <div className="App">
+
 
       <Routes>
         <Route path='/' element={<Home />} />
@@ -46,6 +54,7 @@ function App() {
       </Routes>
         <LoggedUserInfo />
     </div>
+    </>
   );
 }
 

@@ -138,6 +138,7 @@ router.delete('/userprofileedit/:id', (req, res, next) => {
 	console.log('tried to delete User')
 	//later feature delete groups owned by this user as well
 	User.findByIdAndDelete(req.params.id)
+	// jwt.delete(req.params)
 	.then(response=>{
 		res.status(200).json()
 	})

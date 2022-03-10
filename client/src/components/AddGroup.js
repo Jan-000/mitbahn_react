@@ -36,7 +36,7 @@ export default function AddGroup(props) {
 		<>
 			<h1>Add your own ride</h1>
 			<p>marker to recognize addgroup.js component</p>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} className='add-ride'>
 				
 				<label htmlFor="startStation">From: </label>
 				<input
@@ -61,10 +61,10 @@ export default function AddGroup(props) {
 					value={date}
 					onChange={e => setDate(e.target.value)}
 				/>
-				<button type="submit">Add this ride</button>
+				<div>
+				<button id='submit-btn' type="submit">Add this ride</button>
+				</div>
 			</form>
-			
-
 		</>
 	)
 }

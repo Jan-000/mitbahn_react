@@ -1,26 +1,36 @@
-import React, { useState, useEffect, useContext } from 'react'
-import axios from 'axios'
-import { useParams, Link } from 'react-router-dom';
-import { AuthContext } from '../context/auth'
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { useParams, Link } from "react-router-dom";
+import { AuthContext } from "../context/auth";
+
 export default function UserProfile() {
-  const storedToken = localStorage.getItem('authToken')
- const [user, setUser] = useState(null) 
-  const { isLoggedIn, logoutUser, user: userFromAuth} = useContext(AuthContext)
-const id = userFromAuth._id
+
+  const storedToken = localStorage.getItem("authToken");
+  const [user, setUser] = useState(null);
+  const {
+    isLoggedIn,
+    logoutUser,
+    user: userFromAuth,
+  } = useContext(AuthContext);
+  const id = userFromAuth._id;
+
   useEffect(() => {
-    console.log(id)
-    axios.get(`/api/auth/user/${id}`
-    , { headers: { Authorization: `Bearer ${storedToken}` } })
-         .then(response => {
-             console.log(response)
-            setUser(response.data)
-         })
-         .catch(err => console.log(err))
-  }, [])
+    console.log(id);
+    axios
+      .get(`/api/auth/user/${id}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        console.log(response);
+        setUser(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   if (user) {
     return (
-      <div>User Profile of {user.name}
+      <div>
+        User Profile of {user.name}
         {console.log(user)}
         <div>
           <h3>Name: {user.name}</h3>
@@ -28,22 +38,11 @@ const id = userFromAuth._id
           <h3>Password: ********</h3>
         </div>
         <Link to={`../userprofileedit/${user._id}`}>
-          <button id='profile-edit' >EditProfile</button>
+          <button id="profile-edit">EditProfile</button>
         </Link>
       </div>
-    )
+    );
   } else {
-    return (
-    <>
-      err
-    </>
-  )}
+    return <>err</>;
+  }
 }
-// UserProfile.js:24 
-// {_id: '621f4e88287d7770d59b7415', email: 'vr@mail.de', name: '123456', iat: 1646308510, exp: 1646351710}
-// email: "vr@mail.de"
-// exp: 1646351710
-// iat: 1646308510
-// name: "123456"
-// _id: "621f4e88287d7770d59b7415"
-// [[Prototype]]: Object

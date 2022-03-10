@@ -7,11 +7,12 @@ export default function SearchButton() {
 
 
 	return (
-		<nav>
+		<nav className='go-to-search'>
 			<Link to='/SearchGroup'>
-				<button>Search for a ride instead</button>
+				<button id='ride-instead-btn'>Search for a ride instead</button>
 			</Link>
-				<p>this is GoToSearch.js component</p>
+			
+				{/* <p>this is GoToSearch.js component</p> */}
 		</nav>
 	)
 }
