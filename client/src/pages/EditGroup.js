@@ -65,10 +65,10 @@ export default function EditProject() {
 					value={endStation}
 					onChange={e => setEndStation(e.target.value)}
 				/>
-				<label htmlFor="date">To: </label>
+				<label htmlFor="date">Date: </label>
 				<input
 					id="date"
-					type="number"
+					type="date"
 					value={date}
 					onChange={e => setDate(e.target.value)}
 				/>

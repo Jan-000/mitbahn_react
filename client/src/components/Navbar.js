@@ -10,6 +10,7 @@ export default function Navbar() {
 			<Link to="/">
 				<button className="btn">Home</button>
 			</Link>
+
 			{isLoggedIn ? (
 				<>
 					<Link to="/groups">
