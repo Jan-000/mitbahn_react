@@ -123,6 +123,7 @@ console.log("this is group.guests", group?.guests)
 		<>
 			{ group === null ? <div>Loading ...</div> :
 				<>
+       
 				<div className='group-details'>
 					{console.log(group)}
 					<h1>Group details</h1>
@@ -138,18 +139,21 @@ console.log("this is group.guests", group?.guests)
 							<p> - {guest.name}</p>
 						)
 					 })}
+
 					 </div>
 				</>
 			}
 
 			{<>
 					{ editButtonValidation  &&  <Link to={`/groups/edit/${group._id}`}>
+
                         <button className='groupdetails-btn'>Edit this group</button>
                     	</Link>}
 
 					{ joinButtonValidation  && <button className='groupdetails-btn' onClick={joinGroup}>Join this group</button>
 					}
 					{!joinButtonValidation && <button className='groupdetails-btn' onClick={leaveGroup}>Leave this group</button>}
+
 
 			
 			<h3>Message Board</h3>
@@ -160,7 +164,9 @@ console.log("this is group.guests", group?.guests)
 					{chat.messages.map(chatMessage => <ChatCard key={chatMessage._id} {...chatMessage} />) }
  			</>
 			}
+
 			<div className='group-details'>
+
 			
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="message">Your message</label>
@@ -171,7 +177,9 @@ console.log("this is group.guests", group?.guests)
 				<br></br>
 				<button id='message-btn' type="submit">Submit</button>
 			</form>
+
 </div>
+
 
 
 			</>}

@@ -12,7 +12,7 @@ export default function Home() {
 
 
 	return (
-	<> {user ?  <p>You are logged as:  {user.email} and this is redeployment nr 4
+	<> {user ?  <p>You are logged as:  {user.email}<br></br>this is redeployment #4
 		</p> : <p>You are not logged in</p>
 		}
 		</>
