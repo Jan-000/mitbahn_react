@@ -23,6 +23,7 @@ export default function GroupDetails() {
 
 	const author= user.name
 	
+	
 	if (group){
 
 		for (let i=0; i<group.guests.length; i++){
@@ -123,19 +124,19 @@ console.log("this is group.guests", group?.guests)
 			{ group === null ? <div>Loading ...</div> :
 				<>
 					{console.log(group)}
-					<h1>GroupDetails</h1>
+					<h1>Group details</h1>
 					<p>start station: {group.startStation}</p>
 					<p>end station : {group.endStation}</p>
 					<p>date : {group.date}</p>
+					<p>current price is: {group.prices[group.numOfGuests]}</p>
+					<p>Who is travelling :</p>
 					
-					<p>current price is only: {group.prices[group.numOfGuests]}</p>
-					<p>and you will be travelling with :</p>
+				{group?.ownerName&& <> - {group.ownerName} (owner)</>}
 					{group.guests.map(guest=>{ 
 						return(
-							<p>{guest.name}</p>
+							<p> - {guest.name}</p>
 						)
 					 })}
-
 				</>
 			}
 
@@ -166,7 +167,7 @@ console.log("this is group.guests", group?.guests)
 				placeholder="use this field for additional information: meeting point, schedule, questions">
   				</textarea>
 				<br></br>
-				<button type="submit">Submit</button>
+				<button id='message-btn' type="submit">Submit</button>
 			</form>
 
 

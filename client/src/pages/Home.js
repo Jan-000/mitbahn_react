@@ -1,15 +1,10 @@
-import GoToSearch from "../components/GoToSearch"
-
-import React, { useContext } from 'react'
-import { AuthContext } from "../context/auth"
-
-
+import React from 'react'
 
 export default function Home() {
 
 
 	return (
-	<p>This is Sparta and also a redeployment!</p>
+	<p>This is Sparta and also a redeployment number 5!</p>
 
 	)
 

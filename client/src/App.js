@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
+
 import GroupList from './pages/GroupList';
 import GroupDetails from './pages/GroupDetails';
 import EditGroups from './pages/EditGroup';
@@ -9,20 +9,16 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import UserProfile from './components/UserProfile';
+import HomeView from './components/HomeView'
 
 
 import SearchGroup from './components/SearchGroup';
-// import GroupsPage from './components/GroupsPage'
+
 
 
 import UserProfileEdit from './components/UserProfileEdit';
 import LoggedUserInfo from './components/LoggedUserInfo';
-// import styled from "styled-components";
 
-// const Wrapper = styled.div`
-//   display: flex;
-//   flex-flow: row nowrap;
-// `
 
 function App() {
   return (
@@ -32,7 +28,7 @@ function App() {
 
 
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<HomeView />} />
 
         <Route
           path='/groups'
@@ -52,6 +48,7 @@ function App() {
         <Route path='/userprofileedit/:id' element={<UserProfileEdit />} />
 
       </Routes>
+       
         <LoggedUserInfo />
     </div>
     </>
