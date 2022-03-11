@@ -38,7 +38,7 @@ export default function UserProfile() {
           <h3>Password: ********</h3>
         </div>
         <Link to={`../userprofileedit/${user._id}`}>
-          <button id="profile-edit">EditProfile</button>
+          <button className='groupdetails-btn'>EditProfile</button>
         </Link>
       </div>
     );

@@ -39,13 +39,10 @@ export default function Signup() {
 				<input type="password" value={password} onChange={handlePassword} />
 				<label htmlFor="name">Name: </label>
 				<input type="text" value={name} onChange={handleName} />
-				<button type="submit">Sign Up</button>
+				<button className='groupdetails-btn' type="submit">Sign Up</button>
 			</form>
 
 			{errorMessage && <h5>{errorMessage}</h5>}
-
-			<h3>Already have an account?</h3>
-			<Link to='/login'>Login</Link>
 		</>
 	)
 }
