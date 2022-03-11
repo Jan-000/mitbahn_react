@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
+
 import GroupList from './pages/GroupList';
 import GroupDetails from './pages/GroupDetails';
 import EditGroups from './pages/EditGroup';
@@ -28,7 +28,7 @@ function App() {
 
 
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<HomeView />} />
 
         <Route
           path='/groups'
@@ -48,7 +48,7 @@ function App() {
         <Route path='/userprofileedit/:id' element={<UserProfileEdit />} />
 
       </Routes>
-       <HomeView />
+       
         <LoggedUserInfo />
     </div>
     </>

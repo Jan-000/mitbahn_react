@@ -212,14 +212,19 @@ margin: 0 5%;
 }
 
 .mitBahn-greet {
+  background-image: linear-gradient(80deg, #0278d836 30%, #8b000042) ;
+
   margin: 5%;
 }
 .mitBahn-greet-text {
   margin: 15% 0;
+  margin-bottom: 200px;
   /* background-image: linear-gradient(80deg, #0278d84d 50%, #004c8b13) ; */
   border-radius: 10px;
 padding: 10px;
+background-color: #00dbeb48;
 border: 5px solid rgba(36, 167, 255, 0.336);
+box-shadow: #000000 0 0 3px;
 }
 
 /* USER EDITIG PAGE */
@@ -254,9 +259,8 @@ margin: 0 0px 0 20px;
 }
 
 /* GROUP CARD */
-.groups-cards {
-  
-}
+
+
 
 .group-bar img{
   height: 1em;
